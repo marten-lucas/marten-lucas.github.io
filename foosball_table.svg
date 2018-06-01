@@ -381,7 +381,7 @@
      inkscape:cx="210.34044"
      inkscape:cy="12.339076"
      inkscape:document-units="px"
-     inkscape:current-layer="P2_1_rod"
+     inkscape:current-layer="guides"
      showgrid="true"
      inkscape:window-width="2560"
      inkscape:window-height="1377"
@@ -534,11 +534,6 @@
        x="80"
        y="92.362183" />
   </g>
-  <g
-     inkscape:groupmode="layer"
-     id="GUI"
-     inkscape:label="GUI"
-     transform="translate(0,33.872075)" />
   <g
      inkscape:groupmode="layer"
      id="guides"
