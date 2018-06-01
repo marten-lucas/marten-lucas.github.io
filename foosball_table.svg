@@ -13,7 +13,7 @@
    height="500"
    id="svg2"
    version="1.1"
-   inkscape:version="0.92.3 (2405546, 2018-03-11)"
+   inkscape:version="0.92.2 (5c3e80d, 2017-08-06)"
    sodipodi:docname="foosball_table.svg">
   <defs
      id="defs4">
@@ -378,13 +378,13 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.1846654"
-     inkscape:cx="210.34044"
-     inkscape:cy="12.339076"
+     inkscape:cx="319.65244"
+     inkscape:cy="248.77512"
      inkscape:document-units="px"
-     inkscape:current-layer="guides"
+     inkscape:current-layer="P1_1_up"
      showgrid="true"
-     inkscape:window-width="2560"
-     inkscape:window-height="1377"
+     inkscape:window-width="1600"
+     inkscape:window-height="838"
      inkscape:window-x="-8"
      inkscape:window-y="-8"
      inkscape:window-maximized="1"
@@ -1567,7 +1567,7 @@
      inkscape:groupmode="layer"
      id="P2_3_up"
      inkscape:label="P2_3_up"
-     style="display:inline"
+     style="display:none"
      transform="translate(24.961685,-147.19813)">
     <g
        id="g3781"
@@ -1613,7 +1613,7 @@
      inkscape:groupmode="layer"
      id="P2_3_front"
      inkscape:label="P2_3_front"
-     style="display:none"
+     style="display:inline"
      transform="translate(24.961685,-147.19813)">
     <g
        id="g3984"
@@ -1792,7 +1792,7 @@
      inkscape:groupmode="layer"
      id="P1_1_up"
      inkscape:label="P1_1_up"
-     style="display:inline"
+     style="display:none"
      transform="translate(24.961685,-147.19813)">
     <g
        id="g6545"
@@ -1808,7 +1808,7 @@
   </g>
   <g
      transform="translate(-50,9.4396943)"
-     style="display:none;opacity:1"
+     style="display:inline;opacity:1"
      inkscape:label="P1_1_front"
      id="P1_1_front"
      inkscape:groupmode="layer">
@@ -1874,7 +1874,7 @@
      inkscape:groupmode="layer"
      id="P1_2_up"
      inkscape:label="P1_2_up"
-     style="display:inline"
+     style="display:none"
      transform="translate(24.961685,-147.19813)">
     <g
        id="g3804"
@@ -1916,7 +1916,7 @@
      inkscape:groupmode="layer"
      id="P1_2_front"
      inkscape:label="P1_2_front"
-     style="display:none"
+     style="display:inline"
      transform="translate(24.961685,-147.19813)">
     <g
        id="g4000"

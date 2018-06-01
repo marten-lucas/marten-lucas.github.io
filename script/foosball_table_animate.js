@@ -5,7 +5,7 @@ window.onload = function () {
 s = Snap("#foosball_table");
 Snap.load("foosball_table.svg", function(f) {
 	s.append(f);
-	});	
+	});
 };
 
 function toggle_guides() {
