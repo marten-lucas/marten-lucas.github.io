@@ -25,13 +25,17 @@ function rod_move(evt) {
 	var step_size = 10
 	var rod_name = evt.target.id.substring(0, 4);
 	var rod_selector = "#"+rod_name+"_up,#"+rod_name+"_front,#"+rod_name+"_back";
+	
 
+	
 	switch (true) {
-      case /away/.test(evt.target.id):
-        var direction = -1;
-        break;
-      case /toward/.test(evt.target.id):
+      case /away/.test(evt.target.id) && /P1/.test(evt.target.id): 
+	  case /toward/.test(evt.target.id) && /P2/.test(evt.target.id):
         var direction = 1;
+        break;
+      case /toward/.test(evt.target.id) && /P1/.test(evt.target.id):
+	  case /away/.test(evt.target.id) && /P2/.test(evt.target.id):
+        var direction = -1;
         break;
       default:
         var direction = 0;
