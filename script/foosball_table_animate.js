@@ -1,12 +1,19 @@
-var s 
+var s;
 
 window.onload = function () {
 
 s = Snap("#foosball_table");
-Snap.load("foosball_table.svg", function(f) {
-	s.append(f);
+	Snap.load("foosball_table.svg", function(f) {
+		s.append(f);
+		
+		// add onclick function to wildcard ids "_move_"
+		$( '[id*=_move_]' ).click( function() {
+			console.log( this.id );
+		});
 	});
+	
 };
+
 
 function toggle_guides() {
 	var checkbox_guides = document.getElementById("checkbox_toggle_guides");
@@ -19,6 +26,7 @@ function toggle_guides() {
         guides.attr({ display : "none" });      
     }
 }
+
 
 
 function rod_move(evt) {
