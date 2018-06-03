@@ -47,22 +47,24 @@ function rod_move(evt) {
 	var bb_table = table.getBBox();
 	
 	$(rod_selector).each(function(i, rod) {
+		// check if rod is "active" 
+		if (s.select("#"+rod.id).attr("display")=="inline"){
+
+			var rod_svg = s.select("#"+rod.id);
+			var matrix = rod_svg.transform().localMatrix
+					
+			matrix.f = matrix.f + step_size * direction
+			rod_svg.transform(matrix);
 		
-		var rod_svg = s.select("#"+rod.id);
-		var matrix = rod_svg.transform().localMatrix
-				
-		matrix.f = matrix.f + step_size * direction
-		rod_svg.transform(matrix);
-	
-		//check if further step is possible
-		bb_rod = rod_svg.getBBox();
-		
-		// if (rod_svg.attr("display")=="inline" & bb_rod.Y2 + step_size * direction < bb_table.Y2 && bb_rod.Y + step_size * direction >bb_table.Y) {
-		// arrow_clicked.attr({ display : "inline" });   	
-		// } else {
-		// arrow_clicked.attr({ display : "none" });   	
-		// }
-		
+			//check if further step is possible
+			bb_rod = rod_svg.getBBox();
+			
+			if ((bb_rod.y2 + step_size * direction) < bb_table.y2 && (bb_rod.y + step_size * direction) > bb_table.y) {
+				arrow_clicked.attr({ display : "inline" });   	
+			} else {
+				arrow_clicked.attr({ display : "none" });   	
+			}
+		}
 		
 	});	
 	
