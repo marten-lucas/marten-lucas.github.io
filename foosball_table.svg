@@ -778,13 +778,13 @@
        d="m 397.50199,609.00002 v 15"
        style="display:inline;fill:#424242;fill-opacity:1;stroke:#424242;stroke-width:7.55905533;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker2206-53)"
        inkscape:label="#P2_3_move_toward"
-       onclick="rod_move(evt)" />
+       />
     <path
        style="display:inline;fill:#424242;fill-opacity:1;stroke:#424242;stroke-width:7.55905533;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow2Send-8)"
        d="m 397.57463,219.00002 v -15"
        id="P2_3_move_away"
        inkscape:connector-curvature="0"
-       onclick="rod_move(evt)" />
+       />
   </g>
   <g
      style="display:inline"
@@ -804,7 +804,7 @@
        d="m 537.50199,609.00002 v 15"
        style="display:inline;fill:#424242;fill-opacity:1;stroke:#424242;stroke-width:7.55905533;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker2206-1)"
        inkscape:label="#P1_5_move_away"
-       onclick="rod_move(evt)" />
+       />
     <path
        style="display:inline;fill:#424242;fill-opacity:1;stroke:#424242;stroke-width:7.55905533;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow2Send-87)"
        d="m 537.57463,219.00002 v -15"
@@ -831,7 +831,7 @@
        d="m 467.502,609.00002 v 15"
        style="display:inline;fill:#424242;fill-opacity:1;stroke:#424242;stroke-width:7.55905533;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker2206-2)"
        inkscape:label="#P1_2_move_away"
-       onclick="rod_move(evt)" />
+       />
     <path
        style="display:inline;fill:#424242;fill-opacity:1;stroke:#424242;stroke-width:7.55905533;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow2Send-0)"
        d="m 467.57464,219.00002 v -15"
@@ -865,7 +865,7 @@
        d="m 327.50201,609.00002 v 15"
        style="fill:#424242;fill-opacity:1;stroke:#424242;stroke-width:7.55905533;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker2206)"
        inkscape:label="#P1_5_move_away"
-       onclick="rod_move(evt)" />
+       />
   </g>
   <g
      inkscape:groupmode="layer"
@@ -886,13 +886,13 @@
        d="m 252.56448,609.00002 v 15"
        style="display:inline;fill:#424242;fill-opacity:1;stroke:#424242;stroke-width:7.55905533;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker2206-3)"
        inkscape:label="#P2_5_move_toward"
-       onclick="rod_move(evt)" />
+       />
     <path
        style="display:inline;fill:#424242;fill-opacity:1;stroke:#424242;stroke-width:7.55905533;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow2Send-4)"
        d="m 252.63711,219.00002 v -15"
        id="P2_5_move_away"
        inkscape:connector-curvature="0"
-       onclick="rod_move(evt)" />
+       />
   </g>
   <g
      inkscape:groupmode="layer"
@@ -913,7 +913,7 @@
        d="m 42.076474,609.00002 v 15"
        style="display:inline;fill:#424242;fill-opacity:1;stroke:#424242;stroke-width:7.55905533;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker2206-5)"
        inkscape:label="#P2_1_move_toward"
-       onclick="rod_move(evt)" />
+       />
     <path
        style="display:inline;fill:#424242;fill-opacity:1;stroke:#424242;stroke-width:7.55905533;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow2Send-46)"
        d="m 42.149105,219.00002 v -15"
@@ -941,7 +941,7 @@
        d="m 112.07647,609.00002 v 15"
        style="display:inline;fill:#424242;fill-opacity:1;stroke:#424242;stroke-width:7.55905533;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker2206-4)"
        inkscape:label="#P2_2_move_toward"
-       onclick="rod_move(evt)" />
+       />
     <path
        style="display:inline;fill:#424242;fill-opacity:1;stroke:#424242;stroke-width:7.55905533;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow2Send-1)"
        d="m 112.1491,219.00002 v -15"
@@ -969,7 +969,7 @@
        d="m 182.92753,609.00002 v 15"
        style="display:inline;fill:#424242;fill-opacity:1;stroke:#424242;stroke-width:7.55905533;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker2206-6)"
        inkscape:label="#P1_3_move_away"
-       onclick="rod_move(evt)" />
+       />
     <path
        style="display:inline;fill:#424242;fill-opacity:1;stroke:#424242;stroke-width:7.55905533;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow2Send-02)"
        d="m 183.00016,219.00002 v -15"
