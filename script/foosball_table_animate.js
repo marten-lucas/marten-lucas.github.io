@@ -8,12 +8,12 @@ s = Snap("#foosball_table");
 		
 		// add onclick function to wildcard ids "_move_"
 		$( '[id*=_move_]' ).click( function() {
-			console.log( this.id );
+			console.log("moved: " +  this.id );
 			rod_move(this);
 		});
 		
 		$( '[id$=_up], [id$=_back], [id$=_front]' ).click( function() {
-			console.log( this.id );
+			console.log("tilt :" + this.id );
 			rod_tilt(this);
 		});
 	});
@@ -38,15 +38,22 @@ function rod_selector_string(rod_id) {
 	//get Player and rod from clicked arrow
 	var rod_name = rod_id.substring(0, 4);
 	// built selector for all layers of rod
-	return "#"+rod_name+"_up,#"+rod_name+"_front,#"+rod_name+"_back";
+	return "#" + rod_name + "_up,#" + rod_name + "_front,#" + rod_name + "_back";
 }
 
 function rod_move(rod_arrow) {
+	// get id of clicked arrow	
+	if (typeof(rod_arrow.id)== "undefined") {
+		var rod_id = rod_arrow.target.id;
+	} else {
+		var rod_id = rod_arrow.id;
+	};
+	
 	var step_size = 5
 	//get Player and rod from clicked arrow
-	var rod_selector = rod_selector_string(rod_arrow.id);
+	var rod_selector = rod_selector_string(rod_id);
 	// get svg of clicked arrow
-	var arrow_clicked = s.select("#"+rod_arrow.id);
+	var arrow_clicked = s.select("#"+rod_id);
 	
 	var re_P1 = new RegExp("P1"); 	
 	var re_P2 = new RegExp("P2"); 
@@ -55,17 +62,17 @@ function rod_move(rod_arrow) {
 	 
 	
 	// determine direction from player and away/toward 
-	if (re_away.test(rod_arrow.id) && /P1/.test(rod_arrow.id)) {
+	if (re_away.test(rod_id) && /P1/.test(rod_id)) {
 		var direction = 1;
 	};
-	if (re_toward.test(rod_arrow.id) && /P2/.test(rod_arrow.id)) {
+	if (re_toward.test(rod_id) && /P2/.test(rod_id)) {
 		var direction = 1;
 	};
 	
-	if (re_toward.test(rod_arrow.id) && /P1/.test(rod_arrow.id)) {
+	if (re_toward.test(rod_id) && /P1/.test(rod_id)) {
 		var direction = -1;
 	};
-	if (re_away.test(rod_arrow.id) && /P2/.test(rod_arrow.id)) {
+	if (re_away.test(rod_id) && /P2/.test(rod_id)) {
 		var direction = -1;
 	};
 	
@@ -73,6 +80,7 @@ function rod_move(rod_arrow) {
 	var table = s.select("#table");
 	var bb_table = table.getBBox();
 	
+	// move visible tilt and set visibility of arrow clicked
 	$(rod_selector).each(function(i, rod) {
 		// check if rod is "active" 
 		if (s.select("#"+rod.id).attr("display")=="inline"){
@@ -80,9 +88,7 @@ function rod_move(rod_arrow) {
 			var rod_svg = s.select("#"+rod.id);
 			var matrix = rod_svg.transform().localMatrix
 			
-			console.log( rod_svg.id + ": matrix.f);
 			matrix.f = matrix.f + step_size * direction
-			console.log( rod_svg.id + ": matrix.f);
 			
 			rod_svg.transform(matrix);
 		
@@ -98,11 +104,24 @@ function rod_move(rod_arrow) {
 		
 	});	
 	
-
-	
+	// move invisible tilts
+	$(rod_selector).each(function(i, rod) {
+		// check if rod is "active" 
+		if (s.select("#"+rod.id).attr("display")=="none"){
+			// move rod
+			var rod_svg = s.select("#"+rod.id);
+			var matrix = rod_svg.transform().localMatrix
+			
+			matrix.f = matrix.f + step_size * direction
+			
+			rod_svg.transform(matrix);
+		}
+		
+	});	
 	
 	// make the opposite arrow visible (step always possible) 
-	if (re_toward.test(rod_arrow.id)) {
+	var rod_name = rod_id.substring(0, 4)
+	if (re_toward.test(rod_id)) {
 	var arrow_opposite = s.select("#" + rod_name + "_move_away");
 	} else {
 	var arrow_opposite = s.select("#" + rod_name + "_move_toward");
@@ -118,33 +137,38 @@ function rod_tilt(rod_clicked, new_tilt) {
 	// new_tilt as optional argument
 	new_tilt = new_tilt || 'automatic';
 	
+	// get id of clicked arrow	
+	if (typeof(rod_clicked.id)== "undefined") {
+		var rod_id = rod_clicked.target.id;
+	} else {
+		var rod_id = rod_clicked.id;
+	};
+	
 	// set position of all tilts equal to the clicked
-	var rod_clicked_svg = s.select("#"+rod_clicked.id);
+	var rod_clicked_svg = s.select("#"+rod_id);
 	var matrix_visible = rod_clicked_svg.transform().localMatrix;
-	var rod_selector=rod_selector_string(rod_clicked.id);
+	var rod_selector=rod_selector_string(rod_id);
 	
 	$(rod_selector).each(function(i, rod_display) {
-		var tilt_svg = s.select("#"+rod_display.id);
+		var tilt_svg = s.select("#" + rod_display.id);
 		var matrix = tilt_svg.transform().localMatrix
 		
-		console.log( rod_display.id + ": matrix.f);
-		matrix.f = matrix_visible.f 
-		console.log( rod_display.id + ": matrix.f);
+		// matrix.f = matrix_visible.f 
 		
-		 tilt_svg.transform(matrix);
-		// });
+		// tilt_svg.transform(matrix);
+	});
 		
 	// if no new_tilt is given determine new tilt
 	if (new_tilt == "automatic") {
 		var re_isup = new RegExp("_up");
 		var re_isfront = new RegExp("_front");
-		if (re_isup.test(rod_clicked.id)) {
+		if (re_isup.test(rod_id)) {
 			new_tilt = rod_clicked.substring(0, 4)+"back";
 		} else {
-			if (re_isfront.test(rod_clicked.id)) {			
-				new_tilt = rod_clicked.id.substring(0, 4)+"_back";
+			if (re_isfront.test(rod_id)) {			
+				new_tilt = rod_id.substring(0, 4)+"_back";
 			} else {
-				new_tilt = rod_clicked.id.substring(0, 4)+"_front";
+				new_tilt = rod_id.substring(0, 4)+"_front";
 			};
 		};
 	};
