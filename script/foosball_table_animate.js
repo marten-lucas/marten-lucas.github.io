@@ -127,11 +127,9 @@ function tilt_rods( player1 , player2 ) {
 		for (var i = 0; i < rods.length; i++) {
 			var new_tilt = eval(player_arg[k] + "[i]");
 			if (tilts.includes(new_tilt)) {
-				var rod_name = "P1_" + rods[i];
+				var rod_name = player_name[k] + "_" + rods[i];
 				rod_tilt_manual(rod_name, new_tilt);
-			
 			};
-		
 		};
 	};
 	
@@ -280,11 +278,13 @@ function rod_move(rod_arrow) {
 
 function rod_tilt_manual( rod_name , new_tilt ) {
 	var rod_selector = rod_selector_string(rod_name);
+	var new_tilt_name = rod_name + "_" + new_tilt
+
 	$(rod_selector).each(function(i, tilt) {
 		
 		var tilt_svg = s.select("#" + tilt.id);
 		
-		if (tilt.id == new_tilt) {
+		if (tilt.id == new_tilt_name) {
 			tilt_svg.attr({ display : "inline" }); 
 		} else {
 			tilt_svg.attr({ display : "none" });   
