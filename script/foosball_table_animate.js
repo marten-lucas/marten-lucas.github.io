@@ -69,7 +69,7 @@ function rod_move(rod_arrow) {
 	
 	var rod_id = rod_id_get(rod_arrow); 
 		
-	var step_size = 5
+	var step_size = 3.75;
 	//get Player and rod from clicked arrow
 	var rod_selector = rod_selector_string(rod_id);
 	// get svg of clicked arrow
