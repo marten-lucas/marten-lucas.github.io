@@ -41,39 +41,58 @@ function rod_selector_string(rod_id) {
 	return "#" + rod_name + "_up,#" + rod_name + "_front,#" + rod_name + "_back";
 }
 
-function rod_move(rod_arrow) {
+function rod_id_get(rod) {
 	// get id of clicked arrow	
-	if (typeof(rod_arrow.id)== "undefined") {
-		var rod_id = rod_arrow.target.id;
+	if (typeof(rod.id)== "undefined") {
+		return rod_id = rod.target.id;
 	} else {
-		var rod_id = rod_arrow.id;
+		return rod_id = rod.id;
 	};
 	
+};
+
+function player_get(rod_id) {
+	return rod_id.substr(0,2);
+};
+
+function is_P1 (rod_id) {
+	var re_P1 = new RegExp("P1"); 	
+	return re_P1.test(rod_id);
+};
+
+function is_P2 (rod_id) {
+	var re_P2 = new RegExp("P2"); 	
+	return re_P2.test(rod_id);
+};
+
+function rod_move(rod_arrow) {
+	
+	var rod_id = rod_id_get(rod_arrow); 
+		
 	var step_size = 5
 	//get Player and rod from clicked arrow
 	var rod_selector = rod_selector_string(rod_id);
 	// get svg of clicked arrow
 	var arrow_clicked = s.select("#"+rod_id);
 	
-	var re_P1 = new RegExp("P1"); 	
-	var re_P2 = new RegExp("P2"); 
-	var re_away = new RegExp("away");
-	var re_toward = new RegExp("toward");
-	 
+	var re_rod_direction = new RegExp("(away|toward)$");
+	var rod_direction = rod_id.match(re_rod_direction)[1];
 	
-	// determine direction from player and away/toward 
-	if (re_away.test(rod_id) && /P1/.test(rod_id)) {
-		var direction = 1;
+	
+	
+	// determine direction_factorfrom player and away/toward 
+	if (rod_direction=="away" && is_P1(rod_id)) {
+		var direction_factor= 1;
 	};
-	if (re_toward.test(rod_id) && /P2/.test(rod_id)) {
-		var direction = 1;
+	if (rod_direction=="toward" && is_P2(rod_id)) {
+		var direction_factor= 1;
 	};
 	
-	if (re_toward.test(rod_id) && /P1/.test(rod_id)) {
-		var direction = -1;
+	if (rod_direction=="away" && is_P2(rod_id)) {
+		var direction_factor= -1;
 	};
-	if (re_away.test(rod_id) && /P2/.test(rod_id)) {
-		var direction = -1;
+	if (rod_direction=="toward" && is_P1(rod_id)) {
+		var direction_factor= -1;
 	};
 	
 	// get bounding box of table
@@ -88,14 +107,14 @@ function rod_move(rod_arrow) {
 			var rod_svg = s.select("#"+rod.id);
 			var matrix = rod_svg.transform().localMatrix
 			
-			matrix.f = matrix.f + step_size * direction
+			matrix.f = matrix.f + step_size * direction_factor
 			
 			rod_svg.transform(matrix);
 		
 			//if further step would leave the field, hide the clicked arrow
 			bb_rod = rod_svg.getBBox();
 			
-			if ((bb_rod.y2 + step_size * direction) < bb_table.y2 && (bb_rod.y + step_size * direction) > bb_table.y) {
+			if (( bb_rod.y2 + step_size * direction_factor ) < bb_table.y2 && (bb_rod.y + step_size * direction_factor ) > bb_table.y) {
 				arrow_clicked.attr({ display : "inline" });   	
 			} else {
 				arrow_clicked.attr({ display : "none" });   	
@@ -112,7 +131,7 @@ function rod_move(rod_arrow) {
 			var rod_svg = s.select("#"+rod.id);
 			var matrix = rod_svg.transform().localMatrix
 			
-			matrix.f = matrix.f + step_size * direction
+			matrix.f = matrix.f + step_size * direction_factor
 			
 			rod_svg.transform(matrix);
 		}
@@ -121,7 +140,7 @@ function rod_move(rod_arrow) {
 	
 	// make the opposite arrow visible (step always possible) 
 	var rod_name = rod_id.substring(0, 4)
-	if (re_toward.test(rod_id)) {
+	if (rod_direction == "toward" ) {
 	var arrow_opposite = s.select("#" + rod_name + "_move_away");
 	} else {
 	var arrow_opposite = s.select("#" + rod_name + "_move_toward");
@@ -138,11 +157,7 @@ function rod_tilt(rod_clicked, new_tilt) {
 	new_tilt = new_tilt || 'automatic';
 	
 	// get id of clicked arrow	
-	if (typeof(rod_clicked.id)== "undefined") {
-		var rod_id = rod_clicked.target.id;
-	} else {
-		var rod_id = rod_clicked.id;
-	};
+	var rod_id = rod_id_get(rod_clicked)
 	
 	// set position of all tilts equal to the clicked
 	var rod_clicked_svg = s.select("#"+rod_id);
