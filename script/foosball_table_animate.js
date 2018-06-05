@@ -2,6 +2,11 @@ var s;
 var rods = ["1","2","5","3"];
 var tilts = ["up","back","front","down"];
 
+var tilt_p1 = [];
+var tilt_p1_bak = [];
+var tilt_p2 = [];
+var tilt_p2_bak = [];
+
 
 window.onload = function () {
 
@@ -15,15 +20,73 @@ s = Snap("#foosball_table");
 			rod_move(this);
 		});
 		
-		$( '[id$=_up], [id$=_back], [id$=_front]' ).click( function() {
+		$( '[id$=_up], [id$=_back], [id$=_front], [id$=_down]' ).click( function() {
 			console.log("tilt :" + this.id );
-			rod_tilt_auto(this);
+			rod_tilt_toggle(this);
 		});
+		
+		
+		tilt_positions_init();
 		
 		s.select('#ball').drag (ball_move, ball_start, ball_stop )
 	});
 	
 };
+
+function tilt_positions_init() {
+	
+	
+	
+	$( '[id$=_up], [id$=_back], [id$=_front], [id$=_down]' ).each(function(i, tilt) {
+		if (s.select("#"+tilt.id).attr("display")=="inline"){
+			tilt_positions_set(tilt.id);
+		};
+	});
+};
+
+function tilt_positions_set(tilt_id) {
+	var rod_no = rod_no_get(tilt_id);
+	var player_no =player_no_get(tilt_id);
+	var tilt_name = tilt_name_get(tilt_id);;
+	
+	if (player_no==1) {
+		if (tilts.includes(tilt_p1_bak[rod_no])) {
+		tilt_p1_bak[rod_no] = tilt_p1[rod_no];
+		};
+		tilt_p1[rod_no]= tilt_name;
+	};
+	if (player_no==2) {
+		if (tilts.includes(tilt_p2_bak[rod_no])) {
+		tilt_p2_bak[rod_no] = tilt_p2[rod_no];
+		};
+		tilt_p2[rod_no]= tilt_name;
+	};
+	
+	console.log("tilt_p"+player_no+"[" + rod_no +"]: " + tilt_name + " (bak: " + eval("tilt_p"+player_no+"_bak[" + rod_no +"]")+" )");
+}
+
+function tilt_positions_get(rod_id, use_bak) {
+	use_bak = use_bak || false;
+	
+	var rod_no = rod_no_get(rod_id);
+	var player_no =player_no_get(rod_id);
+	
+	if (use_bak) {
+		if (player_no==1) {
+			return tilt_p1_bak[rod_no] ;
+		};
+		if (player_no==2) {
+			return tilt_p2_bak[rod_no] ;
+		};
+	} else {
+		if (player_no==1) {
+			return tilt_p1[rod_no] ;
+		};
+		if (player_no==2) {
+			return tilt_p2[rod_no] ;
+		};		
+	};
+}
 
 var ball_move = function(dx,dy,x,y) {
     var clientX, clientY;
@@ -110,8 +173,8 @@ var ball_stop = function() {
         // break;
     // } 
 	
-	var player1 = ["back","back","back","back"];
-	var player2 = ["front","front","up","up"];
+	var player1 = ["lastdown","lastdown","lastdown","lastdown"];
+	var player2 = ["lastdown","lastdown","up","up"];
 	
 	tilt_rods(player1,player2);
 };
@@ -128,7 +191,7 @@ function tilt_rods( player1 , player2 ) {
 			var new_tilt = eval(player_arg[k] + "[i]");
 			if (tilts.includes(new_tilt)) {
 				var rod_name = player_name[k] + "_" + rods[i];
-				rod_tilt_manual(rod_name, new_tilt);
+				rod_tilt_set(rod_name, new_tilt);
 			};
 		};
 	};
@@ -184,6 +247,21 @@ function rod_id_get(rod) {
 	} else {
 		return rod_id = rod.id;
 	};
+	
+};
+
+function player_no_get(rod_id) { 
+	return rod_id.substr(1,1);
+};
+
+function tilt_name_get(rod_id) {
+	var split_underscore = rod_id.split("_");
+	var tilt_name = split_underscore[2];
+	return tilt_name;
+};
+
+function rod_no_get(rod_id) {
+	return rod_id.substr(3,1);
 	
 };
 
@@ -286,47 +364,66 @@ function rod_move(rod_arrow) {
 
 };
 
-function rod_tilt_manual( rod_name , new_tilt ) {
-	var rod_selector = rod_selector_string(rod_name);
-	var new_tilt_name = rod_name + "_" + new_tilt
-
+function rod_tilt_set( rod_id , new_tilt ) {
+	var rod_selector = rod_selector_string(rod_id);
+	
+	if (tilts.includes(new_tilt)) {
+		var new_tilt_name = rod_id + "_" + new_tilt;
+	}else if (new_tilt == "lastdown") {
+		new_tilt = tilt_positions_get(rod_id)
+		var new_tilt_name = rod_id + "_" + new_tilt;
+	};
+	
 	$(rod_selector).each(function(i, tilt) {
 		
 		var tilt_svg = s.select("#" + tilt.id);
-		
+			
 		if (tilt.id == new_tilt_name) {
 			tilt_svg.attr({ display : "inline" }); 
 		} else {
 			tilt_svg.attr({ display : "none" });   
 		};
 	});
+	
+	tilt_positions_set(new_tilt_name);
 };
 
-function rod_tilt_auto(rod_visible) {
+function rod_tilt_toggle(rod_visible) {
 	
 	var new_tilt
 	// get id of clicked arrow	
 	var rod_id = rod_id_get(rod_visible)
-	var rod_visible_svg = s.select("#"+rod_id);
+	var rod_name = rod_id.substr(0,5);
 
 	// if no new_tilt is given determine new tilt
 	var re_isup = new RegExp("_up");
-	var re_isfront = new RegExp("_front");
-	if (re_isup.test(rod_id)) {
-		new_tilt = rod_visible.id.substring(0, 4)+"_back";
+	var re_isdown = new RegExp("_down");
+	
+	var is_up = re_isup.test(rod_id);
+	var is_down = re_isdown.test(rod_id);
+	
+	var tilt_pos_bak = tilt_positions_get(rod_id, true);
+	if (!tilts.includes(tilt_pos_bak)) {
+		tilt_pos_bak="front";
+	}
+	
+	if (is_up) {
+		new_tilt = tilt_pos_bak;
+	} else if (is_down) {
+			if (tilt_pos_bak=="back") {
+				new_tilt = "front";
+			} else {
+				new_tilt = "back";
+			};
 	} else {
-		if (re_isfront.test(rod_id)) {			
-			new_tilt = rod_id.substring(0, 4)+"_back";
-		} else {
-			new_tilt = rod_id.substring(0, 4)+"_front";
-		};
+		new_tilt="down";
 	};
 	
-	var new_tilt_svg = s.select("#" + new_tilt);
-		
-	// hide clicked and show new_tilt
-	rod_visible_svg.attr({ display : "none" });   
-	new_tilt_svg.attr({ display : "inline" });   
+	
+	if (tilts.includes(new_tilt)) {
+		rod_tilt_set( rod_name , new_tilt )	
+	};
+	
 	
 	
 };
