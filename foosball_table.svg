@@ -13,7 +13,7 @@
    height="461.85956"
    id="svg2"
    version="1.1"
-   inkscape:version="0.92.2 (5c3e80d, 2017-08-06)"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)"
    sodipodi:docname="foosball_table.svg">
   <defs
      id="defs4">
@@ -378,12 +378,12 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="2.2588376"
-     inkscape:cx="471.99358"
+     inkscape:cx="375.26241"
      inkscape:cy="207.45709"
      inkscape:document-units="px"
      showgrid="true"
-     inkscape:window-width="1600"
-     inkscape:window-height="838"
+     inkscape:window-width="2560"
+     inkscape:window-height="1377"
      inkscape:window-x="-8"
      inkscape:window-y="-8"
      inkscape:window-maximized="1"
@@ -399,7 +399,7 @@
      inkscape:snap-bbox="true"
      inkscape:snap-global="true"
      inkscape:snap-grids="true"
-     inkscape:current-layer="g1664">
+     inkscape:current-layer="table_frame">
     <inkscape:grid
        type="xygrid"
        id="grid2816"
@@ -435,7 +435,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -620,20 +620,6 @@
        cx="282.48984"
        cy="281.34476"
        r="45" />
-  </g>
-  <g
-     inkscape:groupmode="layer"
-     id="table_frame"
-     inkscape:label="table_frame"
-     style="display:inline"
-     transform="translate(32.510159,-50.414973)">
-    <rect
-       style="display:inline;fill:none;stroke:#000000;stroke-width:10.00000095;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       id="rect2882-6"
-       width="570.35876"
-       height="330"
-       x="-2.5971148"
-       y="116.34475" />
   </g>
   <g
      transform="translate(32.510159,-50.414973)"
@@ -1292,6 +1278,20 @@
        inkscape:connector-curvature="0"
        onclick="rod_move(evt)"
        inkscape:label="#P1_3_move_toward" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="table_frame"
+     inkscape:label="table_frame"
+     style="display:inline"
+     transform="translate(32.510159,-50.414973)">
+    <rect
+       style="display:inline;fill:none;stroke:#000000;stroke-width:10.00000095;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect2882-6"
+       width="570.35876"
+       height="330"
+       x="-2.5971148"
+       y="116.34475" />
   </g>
   <g
      inkscape:groupmode="layer"
