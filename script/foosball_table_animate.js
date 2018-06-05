@@ -1,5 +1,6 @@
 var s;
-
+var rods = ["1","2","5","3"];
+var tilts = ["up","back","front","down"];
 
 
 window.onload = function () {
@@ -117,8 +118,7 @@ var ball_stop = function() {
 
 function tilt_rods( player1 , player2 ) {
 	
-	var rods = ["1","2","5","3"];
-	var tilts = ["up","back","front"];
+
 	var player_arg = ["player1","player2"];
 	var player_name = ["P1","P2"];
 	
@@ -164,7 +164,17 @@ function rod_selector_string(rod_id) {
 	//get Player and rod from clicked arrow
 	var rod_name = rod_id.substring(0, 4);
 	// built selector for all layers of rod
-	return "#" + rod_name + "_up,#" + rod_name + "_front,#" + rod_name + "_back";
+	var selector_string
+	
+	for (var k = 0; k < tilts.length; k++) {
+		if (typeof(selector_string) == "undefined") {
+			selector_string = "#" + rod_name + "_" + tilts[k];		
+		} else {
+			selector_string = selector_string + ", #" + rod_name + "_" + tilts[k];		
+		};
+		
+	};
+	return selector_string;
 }
 
 function rod_id_get(rod) {
