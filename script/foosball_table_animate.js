@@ -50,16 +50,20 @@ function tilt_positions_set(tilt_id) {
 	var tilt_name = tilt_name_get(tilt_id);;
 	
 	if (player_no==1) {
-		if (tilts.includes(tilt_p1[rod_no])) {
-		tilt_p1_bak[rod_no] = tilt_p1[rod_no];
+		if (tilt_p1[rod_no] != tilt_name) {
+			if (tilts.includes(tilt_p1[rod_no])) {
+			tilt_p1_bak[rod_no] = tilt_p1[rod_no];
+			};
+			tilt_p1[rod_no]= tilt_name;
 		};
-		tilt_p1[rod_no]= tilt_name;
 	};
 	if (player_no==2) {
-		if (tilts.includes(tilt_p2[rod_no])) {
-		tilt_p2_bak[rod_no] = tilt_p2[rod_no];
+		if (tilt_p2[rod_no] != tilt_name) {
+			if (tilts.includes(tilt_p2[rod_no])) {
+			tilt_p2_bak[rod_no] = tilt_p2[rod_no];
+			};
+			tilt_p2[rod_no]= tilt_name;
 		};
-		tilt_p2[rod_no]= tilt_name;
 	};
 	
 	console.log("tilt_p"+player_no+"[" + rod_no +"]: " + tilt_name + " (bak: " + eval("tilt_p"+player_no+"_bak[" + rod_no +"]")+" )");
@@ -183,7 +187,7 @@ function tilt_rods( player1 , player2 ) {
 	for (var k = 0; k < player_name.length; k++) {
 		for (var i = 0; i < rods.length; i++) {
 			var new_tilt = eval(player_arg[k] + "[i]");
-			if (tilts.includes(new_tilt)) {
+			if (tilts.includes(new_tilt) || new_tilt == "lastdown" ) {
 				var rod_name = player_name[k] + "_" + rods[i];
 				rod_tilt_set(rod_name, new_tilt);
 			};
@@ -258,6 +262,25 @@ function rod_no_get(rod_id) {
 	return rod_id.substr(3,1);
 	
 };
+
+function is_up(rod_id) {
+	var tilt_pos = tilt_positions_get(rod_id);
+	return tilt_pos=="up";
+}
+
+function is_down(rod_id) {
+	return !(is_up(rod_id));
+}
+
+function was_up(rod_id) {
+	var tilt_pos = tilt_positions_get(rod_id,true);
+	return tilt_pos=="up";
+}
+
+function was_down(rod_id) {
+	return !(was_up(rod_id));
+}
+
 
 function player_get(rod_id) {
 	return rod_id.substr(0,2);
@@ -360,15 +383,12 @@ function rod_move(rod_arrow) {
 
 function rod_tilt_set( rod_id , new_tilt ) {
 	var rod_selector = rod_selector_string(rod_id);
+	var tilt = tilt_positions_get(rod_id);
 	
-	if (tilts.includes(new_tilt)) {
-		var new_tilt_name = rod_id + "_" + new_tilt;
-	}else if (new_tilt == "lastdown") {
-		new_tilt = tilt_positions_get(rod_id)
-		var new_tilt_name = rod_id + "_" + new_tilt;
-	};
 	
-	$(rod_selector).each(function(i, tilt) {
+	if (tilts.includes(new_tilt) && tilt != new_tilt) {
+		var new_tilt_name = rod_id + "_" + new_tilt;
+		$(rod_selector).each(function(i, tilt) {
 		
 		var tilt_svg = s.select("#" + tilt.id);
 			
@@ -377,9 +397,27 @@ function rod_tilt_set( rod_id , new_tilt ) {
 		} else {
 			tilt_svg.attr({ display : "none" });   
 		};
+		
+		tilt_positions_set(new_tilt_name);
 	});
+	}else if (new_tilt == "lastdown") {
+		
+		
+		
+		if (is_up(rod_id) && was_down(rod_id)) {
+			var tilt_bak = tilt_positions_get(rod_id,true);
+			if (typeof(tilt_bak)=="undefined") {
+				new_tilt="down";
+			} else {
+			 new_tilt = tilt_bak
+			};
+			console.log(rod_id +": is " + tilt + " was " + tilt_positions_get(rod_id, true) + " will be set to " + new_tilt );
+			
+			rod_tilt_set(rod_id, new_tilt);
+		}
+	};
 	
-	tilt_positions_set(new_tilt_name);
+	
 };
 
 function rod_tilt_toggle(rod_visible) {
