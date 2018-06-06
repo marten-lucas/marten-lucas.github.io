@@ -50,13 +50,13 @@ function tilt_positions_set(tilt_id) {
 	var tilt_name = tilt_name_get(tilt_id);;
 	
 	if (player_no==1) {
-		if (tilts.includes(tilt_p1_bak[rod_no])) {
+		if (tilts.includes(tilt_p1[rod_no])) {
 		tilt_p1_bak[rod_no] = tilt_p1[rod_no];
 		};
 		tilt_p1[rod_no]= tilt_name;
 	};
 	if (player_no==2) {
-		if (tilts.includes(tilt_p2_bak[rod_no])) {
+		if (tilts.includes(tilt_p2[rod_no])) {
 		tilt_p2_bak[rod_no] = tilt_p2[rod_no];
 		};
 		tilt_p2[rod_no]= tilt_name;
@@ -154,29 +154,23 @@ var ball_stop = function() {
 		
 	var field_zone_id = field_zone_id_get(bb_ball.cx,bb_ball.cy);
 	
-	// switch(field_zone_id) {
-    // case "P1_1_zone":
-	// case "P1_2_zone":
-        // text = "Banana is good!";
-        // break;
-    // case "P1_5_zone":
-	// case "P1_3_zone":    
-		// text = "Banana is good!";
-        // break;
-	// case "P2_1_zone":
-	// case "P2_2_zone":
-        // text = "Banana is good!";
-        // break;
-    // case "P2_5_zone":
-	// case "P2_3_zone":
-		// text = "Banana is good!";
-        // break;
-    // } 
+	var player_no = player_no_get(field_zone_id);
+	var rod_no = rod_no_get(field_zone_id);
 	
-	var player1 = ["lastdown","lastdown","lastdown","lastdown"];
-	var player2 = ["lastdown","lastdown","up","up"];
+	var player_down = ["lastdown","lastdown","lastdown","lastdown"];
+	var player_up = ["lastdown","lastdown","up","up"];
 	
-	tilt_rods(player1,player2);
+	
+	if ( rod_no == 1 || rod_no == 2) {
+		if (player_no==1) {
+			tilt_rods(player_up,player_down);
+		}	else {
+			tilt_rods(player_down,player_up);
+		};
+	} else {
+		tilt_rods(player_down,player_down);	
+	};	
+	
 };
 
 function tilt_rods( player1 , player2 ) {
@@ -393,7 +387,7 @@ function rod_tilt_toggle(rod_visible) {
 	var new_tilt
 	// get id of clicked arrow	
 	var rod_id = rod_id_get(rod_visible)
-	var rod_name = rod_id.substr(0,5);
+	var rod_name = rod_id.substr(0,4);
 
 	// if no new_tilt is given determine new tilt
 	var re_isup = new RegExp("_up");
@@ -408,7 +402,7 @@ function rod_tilt_toggle(rod_visible) {
 	}
 	
 	if (is_up) {
-		new_tilt = tilt_pos_bak;
+		new_tilt = "undefined";
 	} else if (is_down) {
 			if (tilt_pos_bak=="back") {
 				new_tilt = "front";
