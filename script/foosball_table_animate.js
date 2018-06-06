@@ -300,7 +300,7 @@ function rod_move(rod_arrow) {
 	
 	var rod_id = rod_id_get(rod_arrow); 
 		
-	var step_size = 3.75;
+	var step_size = 3.75/2;
 	//get Player and rod from clicked arrow
 	var rod_selector = rod_selector_string(rod_id);
 	// get svg of clicked arrow
@@ -338,18 +338,24 @@ function rod_move(rod_arrow) {
 			var rod_svg = s.select("#"+rod.id);
 			var matrix = rod_svg.transform().localMatrix
 			
+			bb_rod = rod_svg.getBBox();
+			
+			if (direction_factor >0) {
+				dist_to_wall = Math.abs(bb_table.y2  - bb_rod.y2);
+			} else {
+				dist_to_wall = Math.abs( bb_table.y - bb_rod.y );
+			};
+			
+			console.log(rod_id + ": distance to wall " + parseInt(dist_to_wall));
+			
+			if (step_size > dist_to_wall) {
+				step_size= dist_to_wall;
+				arrow_clicked.attr({ display : "none" });   
+			};
+			
 			matrix.f = matrix.f + step_size * direction_factor
 			
 			rod_svg.transform(matrix);
-		
-			//if further step would leave the field, hide the clicked arrow
-			bb_rod = rod_svg.getBBox();
-			
-			if (( bb_rod.y2 + step_size * direction_factor ) < bb_table.y2 && (bb_rod.y + step_size * direction_factor ) > bb_table.y) {
-				arrow_clicked.attr({ display : "inline" });   	
-			} else {
-				arrow_clicked.attr({ display : "none" });   	
-			}
 		}
 		
 	});	
