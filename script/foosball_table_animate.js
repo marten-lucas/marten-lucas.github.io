@@ -25,10 +25,15 @@ s = Snap("#foosball_table");
 			rod_tilt_toggle(this);
 		});
 		
+		$( '#table_field' ).on( "dblclick", function( event ) {
+			ball_position_set(event.pageX , event.pageY, event );
+		});
+		
 		
 		tilt_positions_init();
 		
 		s.select('#ball').drag (ball_move, ball_start, ball_stop )
+		
 	});
 	
 };
@@ -150,6 +155,25 @@ var ball_start = function( x, y, ev) {
 	this.data('tableinside_top', bb_table.y);
 	this.data('tableinside_buttom', bb_table.y2);
 };
+
+function ball_position_set( new_x, new_y ,ev) {
+	
+	var ball_svg = s.select("#ball");
+	var bb_ball = ball_svg.getBBox();
+	
+	
+	ball_svg.ball_start( bb_ball.cx, bb_ball.cx, ev);
+	
+	var dx = new_x - bb_ball.cx;
+	var dy = new_x - bb_ball.cx;
+	
+	ball_svg.ball_move(dx,dy,new_x,new_y)
+	
+	ball_svg.ball_stop();
+	
+	
+};
+
 
 var ball_stop = function() {
 	// determine Zone
