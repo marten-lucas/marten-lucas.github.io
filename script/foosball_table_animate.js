@@ -25,8 +25,8 @@ s = Snap("#foosball_table");
 			rod_tilt_toggle(this);
 		});
 		
-		$( '#table_field' ).on( "dblclick", function( event ) {
-			ball_position_set(event.pageX , event.pageY, event );
+		$( '#table_field' ).on( "dblclick", function( e ) {
+			ball_position_set(e.pageX , e.pageY, e );
 		});
 		
 		
@@ -156,23 +156,7 @@ var ball_start = function( x, y, ev) {
 	this.data('tableinside_buttom', bb_table.y2);
 };
 
-function ball_position_set( new_x, new_y ,ev) {
-	
-	var ball_svg = s.select("#ball");
-	var bb_ball = ball_svg.getBBox();
-	
-	
-	ball_svg.ball_start( bb_ball.cx, bb_ball.cx, ev);
-	
-	var dx = new_x - bb_ball.cx;
-	var dy = new_x - bb_ball.cx;
-	
-	ball_svg.ball_move(dx,dy,new_x,new_y)
-	
-	ball_svg.ball_stop();
-	
-	
-};
+
 
 
 var ball_stop = function() {
@@ -198,6 +182,33 @@ var ball_stop = function() {
 	} else {
 		tilt_rods(player_down,player_down);	
 	};	
+	
+	console.log("ball moved to " + parseInt(bb_ball.cx) + ";" + parseInt(bb_ball.cy) + "(matrix: " + ball_svg.transform().localMatrix + ")")
+	
+};
+
+
+function ball_position_set( pagex, pagey ,ev) {
+	
+	var ball_svg = s.select("#ball");
+	var bb_ball = ball_svg.getBBox();
+	
+	// !!!! MAGIC VALUE !!!! need to be set to comp
+	var new_y = pagey - 110;
+	var new_x = pagex - 50;
+	var dx = new_x - bb_ball.cx ;
+	var dy = new_y - bb_ball.cy;
+	var origTransform = ball_svg.transform().local
+	
+	console.log(origTransform);
+	console.log("ball ("+ parseInt(bb_ball.cx) + "," + parseInt(bb_ball.cy) + ") to (" + parseInt(new_x) +";" + parseInt(new_y) +") : dx:" + parseInt(dx) +" dy:" + parseInt(dy));
+	
+	ball_svg.attr({
+		transform: origTransform + (origTransform ? "T" : "t") + [dx, dy]
+		});
+	
+	console.log(ball_svg.transform().local);
+	
 	
 };
 
