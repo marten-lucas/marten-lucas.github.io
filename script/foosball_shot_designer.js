@@ -3,6 +3,8 @@ var s
 var visible_goalposition_svg
 var visible_goalposition_id
 var svg_shots 
+var shot_count = 0;
+var svg_shot_selected 
 
 function init_shotdesigner () {
 	s = Snap("#foosball_table");
@@ -21,9 +23,42 @@ function init_shotdesigner () {
       goal_position_toggle()
     })
 	
+	$(".dropdown-menu li a").click(function(){
+		var selText = $(this).text();
+		$(this).parents('.btn-group').find('.dropdown-toggle').html(selText+' <span class="caret"></span>');
+});
+	
+	
 	goalposition_set("3", true);
 	
+	
+	
+	shotlist_visible_set();
+	
 };
+
+var shot_clicked = function () {
+   svg_shot_selected_set(this)
+};
+
+function svg_shot_selected_set ( select_me ) {
+	
+	// deselect
+	
+	// select new
+	svg_shot_selected = select_me
+	
+	
+}
+
+function shotlist_visible_set() {
+	// if (shot_count > 0 ) {
+		// $('#select_shots').show();
+	// } else {
+		// $('#select_shots').hide();
+	// };
+	
+}
 
 function goal_position_toggle() {
 	if ($('#check_5goalpos').prop('checked')) {
@@ -107,7 +142,7 @@ function shot_add(target_position, goal_id) {
 	var target_y = bb_target.cy - 50
 	
 	if (goal_id.substring(0,2)=="P1") {
-		var target_x = bb_target.cx + 20
+		var target_x = bb_target.cx + 30
 	} else {
 		var target_x = bb_target.cx + 40
 	};
@@ -118,6 +153,13 @@ function shot_add(target_position, goal_id) {
     svg_shotline.attr({strokeWidth:ball_diameter,stroke:"yellow",strokeLinecap:"butt"});
 	
 	console.log("create shot on Pos." +target_position + " of " + goal_id);
+	
+	shot_count = shot_count + 1;
+	
+	svg_shotline.click( shot_clicked );
+	
+	shotlist_visible_set();
+	
 	
 };
 
