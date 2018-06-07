@@ -53,12 +53,13 @@
 
         <!-- Page Content -->
         <div id="page-content-wrapper">
-            <div class="container-fluid">
+            <div class="page-header">
 				<h1>Foosboard</h1>
 				<p>...die Taktiktafel für Tischfußball</p> 
+			</div>
 				<div class="container-fluid" >
 					<svg id="foosball_table" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="700px" height="500px"></svg>
-					
+										
 					<div class="form-check">
 						<input class="form-check-input" type="checkbox" value="" id="checkbox_toggle_guides" onclick="toggle_guides()">
 						<label class="form-check-label" for="checkbox_toggle_guides">
@@ -67,7 +68,23 @@
 					</div>
 				</div>
                 <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Toggle Menu</a>
-            </div>
+				
+
+				<input data-toggle="toggle" data-on="5 Positions" data-off="3 Positions" type="checkbox" id="check_5goalpos" checked="">
+				
+				<div class="btn-group" id="dropdown_addshot">
+					<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdown_menNewShot" data-toggle="dropdown" aria-expanded="false">
+					add shot
+					</button>
+					<div class="dropdown-menu" aria-labelledby="dropdown_menNewShot">
+						<button class="dropdown-item" id="btn_addshot_pos5" type="button">right</button>
+						<button class="dropdown-item" id="btn_addshot_pos4" type="button">half-right</button>
+						<button class="dropdown-item" id="btn_addshot_pos3" type="button">mid</button>
+						<button class="dropdown-item" id="btn_addshot_pos2" type="button">half-left</button>
+						<button class="dropdown-item" id="btn_addshot_pos1" type="button">left</button>
+					</div>
+				</div>
+            
         </div>
         <!-- /#page-content-wrapper -->
 
@@ -75,14 +92,20 @@
     <!-- /#wrapper -->
 		
     
-
-    <!-- Optional JavaScript -->
-    
+	
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+	
+	 <!-- bootstrap_toggle -->
+	<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+	<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+	
+	 <!-- SnapSVG -->
 	<script src="script/snap.svg-min.js"></script>
+	
+	 <!-- custom scrips -->
 	<script src="script/foosball_table_animate.js"> type="text/javascript" </script> 
 	<script src="script/foosball_shot_designer.js"> type="text/javascript" </script> 
 		

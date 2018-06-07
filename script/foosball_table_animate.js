@@ -16,12 +16,10 @@ s = Snap("#foosball_table");
 		
 		// add onclick function to wildcard ids "_move_"
 		$( '[id*=_move_]' ).click( function() {
-			console.log("moved: " +  this.id );
 			rod_move(this);
 		});
 		
 		$( '[id$=_up], [id$=_back], [id$=_front], [id$=_down]' ).click( function() {
-			console.log("tilt :" + this.id );
 			rod_tilt_toggle(this);
 		});
 		
@@ -34,6 +32,7 @@ s = Snap("#foosball_table");
 		
 		s.select('#ball').drag (ball_move, ball_start, ball_stop )
 		
+		init_shotdesigner();
 	});
 	
 };
@@ -207,18 +206,15 @@ function ball_position_set( pagex, pagey ,ev) {
 		transform: origTransform + (origTransform ? "T" : "t") + [dx, dy]
 		});
 	
-	console.log(ball_svg.transform().local);
 	
 	
 };
 
 function tilt_rods( player1 , player2 ) {
-	
 
 	var player_arg = ["player1","player2"];
 	var player_name = ["P1","P2"];
-	
-	
+		
 	for (var k = 0; k < player_name.length; k++) {
 		for (var i = 0; i < rods.length; i++) {
 			var new_tilt = eval(player_arg[k] + "[i]");
@@ -242,6 +238,15 @@ function field_zone_id_get(x,y) {
 	});	
 	return zone_id;
 };
+
+function ball_zone_id_get() {
+	var ball_svg = s.select("#ball");
+	var bb_ball = ball_svg.getBBox();
+	
+	return  field_zone_id_get(bb_ball.cx,bb_ball.cy)
+	
+};
+
 
 function toggle_guides() {
 	var checkbox_guides = document.getElementById("checkbox_toggle_guides");
