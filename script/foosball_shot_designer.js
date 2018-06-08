@@ -142,9 +142,9 @@ function shot_add(target_position, goal_id) {
 	var target_y = bb_target.cy - 50
 	
 	if (goal_id.substring(0,2)=="P1") {
-		var target_x = bb_target.cx + 30
+		var target_x = bb_target.x + 20
 	} else {
-		var target_x = bb_target.cx + 40
+		var target_x = bb_target.x2 + 50
 	};
 	
 
