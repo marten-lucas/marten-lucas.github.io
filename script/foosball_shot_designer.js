@@ -11,7 +11,7 @@ function init_shotdesigner () {
 	
 	svg_shots = s.select("#shots");
 	
-	$( '[id^=btn_addshot_pos]' ).click( function() {
+	$( '[id^=btn_addshot_]' ).click( function() {
 			addShot_btn_click(this);
 		});
 	
@@ -21,21 +21,13 @@ function init_shotdesigner () {
 	
 	$('#check_5goalpos').change(function() {
       goal_position_toggle()
-    })
-	
-	$(".dropdown-menu li a").click(function(){
-		var selText = $(this).text();
-		$(this).parents('.btn-group').find('.dropdown-toggle').html(selText+' <span class="caret"></span>');
-});
-	
+		});
 	
 	goalposition_set("3", true);
-	
-	
-	
+		
 	shotlist_visible_set();
-	
 };
+
 
 var shot_clicked = function () {
    svg_shot_selected_set(this)
@@ -113,19 +105,10 @@ function goalposition_set( positions, force_toggle ) {
 	
 }
 
-$('#dropdown_addshot').on('show.bs.dropdown', function () {
-   goalposition_show( ball_zone_id_get() );
-});
-
-
-$('#dropdown_addshot').on('hide.bs.dropdown', function () {
-  goalposition_hide();
-});
 
 function addShot_btn_click(btn) {
-	var target_pos = btn.id.slice(-1);
 	var goal_id = visible_goalposition_id
-	shot_add(target_pos,goal_id );
+	shot_add(3,goal_id );
 };
 
 function shot_add(target_position, goal_id) {
