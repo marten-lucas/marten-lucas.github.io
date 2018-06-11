@@ -15,6 +15,10 @@ function init_shotdesigner () {
 			addShot_btn_click(this);
 		});
 	
+	$( '#check_5goalpos' ).change( function() {
+			goal_position_toggle();
+		});
+	
 	$( '[id^=btntoggle_goalpos]' ).click( function() {
 			goal_position_toggle(this);
 		});
@@ -45,7 +49,6 @@ function init_shotdesigner () {
 function goal_position_toggle() {
 	if ($('#check_5goalpos').prop('checked')) {
 		var number_pos = "5";
-		
 	} else{
 		var number_pos = "3";
 	};
@@ -79,9 +82,27 @@ function goalposition_hide() {
 function goalposition_set( positions, force_toggle ) {
 	force_toggle = force_toggle || false;
 	
-	number_goalpositions = positions;
+	var number_goalpositions_bak = number_goalpositions;
 	
 
+	
+	number_goalpositions = positions;
+	
+	if (edit_mode_active) {
+		
+		var svg_goal_p1_bak = s.select("#P1_goal_" + number_goalpositions_bak + "pos");
+		svg_goal_p1_bak.attr({ display : "none" });      
+	
+		var svg_goal_p2_bak = s.select("#P2_goal_" + number_goalpositions_bak + "pos");
+		svg_goal_p2_bak.attr({ display : "none" });  
+		
+		var svg_goal_p1 = s.select("#P1_goal_" + number_goalpositions + "pos");
+		svg_goal_p1.attr({ display : "inline" });      
+	
+		var svg_goal_p2 = s.select("#P2_goal_" + number_goalpositions + "pos");
+		svg_goal_p2.attr({ display : "inline" });   	
+		
+	};
 	
 	
 }
@@ -89,6 +110,7 @@ function goalposition_set( positions, force_toggle ) {
 
 function addShot_btn_click(btn) {
 	var shot_type = btn.id.replace("btn_addshot_","");
+	
 	svg_default_shot = shot_defaultadd(shot_type);
 	
 	shotline_select(svg_default_shot);
@@ -247,10 +269,27 @@ function shot_defaultadd(shot_type) {
 	} else {
 		var target_x = bb_target.x2 + 20
 	};
+	
+	
+	if (shot_type=="direct") {
+		var svg_shotline = svg_shotlayer.polyline(bb_ball.cx,bb_ball.cy, target_x, target_y);
+	} else {
+		var table_svg = s.select("#table_field");
+		var bb_table = table_svg.getBBox();
 		
-	var svg_shotline = svg_shotlayer.polyline(bb_ball.cx,bb_ball.cy, target_x, target_y);
-    
-	svg_shotline.attr({strokeWidth:ball_diameter,stroke:"yellow",strokeLinecap:"butt"});
+		if (shot_type == "bank_far") {
+			var relection_y = bb_table.y
+			var relection_x = relection_x_get(bb_ball.cx, bb_ball.cy, target_x, target_y, relection_y)
+			
+		} else if (shot_type == "bank_near") {
+			var relection_y = bb_table.y2	
+			var relection_x = relection_x_get(bb_ball.cx, bb_ball.cy, target_x, target_y, relection_y)
+		};
+		
+		var svg_shotline = svg_shotlayer.polyline(bb_ball.cx, bb_ball.cy, relection_x, relection_y, target_x, target_y);
+	};
+	
+	svg_shotline.attr({strokeWidth:ball_diameter,stroke:"yellow", fill: "none" ,strokeLinecap:"butt"});
 	
 	var unique_id = "user_shot_" + svg_shotline.id;
 	
@@ -265,6 +304,9 @@ function shot_defaultadd(shot_type) {
 };
 
 
+function relection_x_get(start_x, start_y, target_x, target_y, relection_y) {
+	return (parseFloat(target_x) + parseFloat(start_x))/2 
+};
 
 function default_targetgoal_id_get(ball_zone) {
 	if (ball_zone.substring(0,2)=="P1") {
@@ -311,6 +353,7 @@ var lineend_move = function(dx,dy,x,y) {
 			});
 			
 			polyline_end_set(svg_shotline_selected, new_x , new_y );
+			polyline_reflection_set(svg_shotline_selected);
 			
 		};
 	};
@@ -337,6 +380,17 @@ function polyline_end_set(this_polyline, new_x, new_y) {
 	};
 	
 	this_polyline.attr({"points" : line_points });
+};
+
+function polyline_reflection_set(this_polyline) {
+	var line_points = this_polyline.attr("points")
+	
+	if (line_points.length == 6) {
+		var reflection_x =  relection_x_get(line_points[0], line_points[1], line_points[4], line_points[5], line_points[3]);
+		line_points[2] = parseFloat(reflection_x);
+		
+		this_polyline.attr({"points" : line_points });
+	};
 };
 
 var lineend_start = function( x, y, ev) {
@@ -407,6 +461,7 @@ var linestart_move = function(dx,dy,x,y) {
 			});
 			
 			polyline_start_set(svg_shotline_selected, new_x , new_y );
+			polyline_reflection_set(svg_shotline_selected);
 		};
 	};
 };
