@@ -278,15 +278,15 @@ function shot_defaultadd(shot_type) {
 		var bb_table = table_svg.getBBox();
 		
 		if (shot_type == "bank_far") {
-			var relection_y = bb_table.y
-			var relection_x = relection_x_get(bb_ball.cx, bb_ball.cy, target_x, target_y, relection_y)
+			var reflection_y = bb_table.y
+			var reflection_x = reflection_x_get(bb_ball.cx, bb_ball.cy, target_x, target_y, reflection_y)
 			
 		} else if (shot_type == "bank_near") {
-			var relection_y = bb_table.y2	
-			var relection_x = relection_x_get(bb_ball.cx, bb_ball.cy, target_x, target_y, relection_y)
+			var reflection_y = bb_table.y2	
+			var reflection_x = reflection_x_get(bb_ball.cx, bb_ball.cy, target_x, target_y, reflection_y)
 		};
 		
-		var svg_shotline = svg_shotlayer.polyline(bb_ball.cx, bb_ball.cy, relection_x, relection_y, target_x, target_y);
+		var svg_shotline = svg_shotlayer.polyline(bb_ball.cx, bb_ball.cy, reflection_x, reflection_y, target_x, target_y);
 	};
 	
 	svg_shotline.attr({strokeWidth:ball_diameter,stroke:"yellow", fill: "none" ,strokeLinecap:"butt"});
@@ -304,8 +304,19 @@ function shot_defaultadd(shot_type) {
 };
 
 
-function relection_x_get(start_x, start_y, target_x, target_y, relection_y) {
-	return (parseFloat(target_x) + parseFloat(start_x))/2 
+function reflection_x_get(start_x, start_y, target_x, target_y, reflection_y) {
+	
+	var delta_start_y = start_y - reflection_y;
+	var delta_target_y = target_y - reflection_y;
+	var delta_x = target_x - start_x ;
+	
+	var ratio_y = delta_start_y / (delta_target_y + delta_start_y);
+	
+	var offset_reflection_x = ratio_y * delta_x
+	
+	var reflection_x = parseFloat(start_x) + parseFloat(offset_reflection_x);
+
+	return reflection_x 
 };
 
 function default_targetgoal_id_get(ball_zone) {
@@ -386,8 +397,8 @@ function polyline_reflection_set(this_polyline) {
 	var line_points = this_polyline.attr("points")
 	
 	if (line_points.length == 6) {
-		var reflection_x =  relection_x_get(line_points[0], line_points[1], line_points[4], line_points[5], line_points[3]);
-		line_points[2] = parseFloat(reflection_x);
+		var reflection_x =  reflection_x_get(line_points[0], line_points[1], line_points[4], line_points[5], line_points[3]);
+		line_points[2] = reflection_x;
 		
 		this_polyline.attr({"points" : line_points });
 	};
