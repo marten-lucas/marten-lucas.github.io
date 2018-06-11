@@ -156,8 +156,8 @@ function lineend_position_set(svg_shotline) {
 	var svg_lineend = s.select("#lineend");
 	var bb_lineend = svg_lineend.getBBox();
 	
-	var new_x = svg_shotline.attr("x2")
-	var new_y = svg_shotline.attr("y2")
+	var new_x = ployline_point_get(svg_shotline,'end','x')
+	var new_y = ployline_point_get(svg_shotline,'end','y')
 	var dx = new_x - bb_lineend.cx ;
 	var dy = new_y - bb_lineend.cy;
 	var origTransform = svg_lineend.transform().local
@@ -169,11 +169,13 @@ function lineend_position_set(svg_shotline) {
 
 function linestart_position_set(svg_shotline) {
 	
+	
+	
 	var svg_linestart = s.select("#linestart");
 	var bb_linestart = svg_linestart.getBBox();
 	
-	var new_x = svg_shotline.attr("x1")
-	var new_y = svg_shotline.attr("y1")
+	var new_x = ployline_point_get(svg_shotline,'start','x')
+	var new_y = ployline_point_get(svg_shotline,'start','y')
 	var dx = new_x - bb_linestart.cx ;
 	var dy = new_y - bb_linestart.cy;
 	var origTransform = svg_linestart.transform().local
@@ -181,6 +183,30 @@ function linestart_position_set(svg_shotline) {
 	svg_linestart.attr({
 						transform: origTransform + (origTransform ? "T" : "t") + [dx, dy]
 					});
+};
+
+function ployline_point_get( this_polyline, point_type , axis ) {
+	var points = this_polyline.attr("points")
+	
+	if (point_type == "start") {
+		var index = 0
+	} else if (point_type == "bank") {
+		if (points.length == 4) {
+			var index = 2 
+		};
+	} else if (point_type == "end") {
+		if (points.length == 4) {
+			var index = 2 
+		} else if (points.length == 6) {
+			var index = 4 
+		};
+	};
+	
+	if (axis == "y") {
+			index = index + 1;
+	}
+	
+	return points[index];
 };
 
 function shot_defaultadd(shot_type) {
@@ -208,8 +234,9 @@ function shot_defaultadd(shot_type) {
 		var target_x = bb_target.x2 + 20
 	};
 		
-	var svg_shotline = svg_shotlayer.line(bb_ball.cx,bb_ball.cy, target_x, target_y);
-    svg_shotline.attr({strokeWidth:ball_diameter,stroke:"yellow",strokeLinecap:"butt"});
+	var svg_shotline = svg_shotlayer.polyline(bb_ball.cx,bb_ball.cy, target_x, target_y);
+    
+	svg_shotline.attr({strokeWidth:ball_diameter,stroke:"yellow",strokeLinecap:"butt"});
 	
 	var unique_id = "user_shot_" + svg_shotline.id;
 	
@@ -269,12 +296,33 @@ var lineend_move = function(dx,dy,x,y) {
 				transform: this.data('origTransform') + (this.data('origTransform') ? "T" : "t") + [dx, dy]
 			});
 			
-			svg_shotline_selected.attr({
-				x2 : new_x ,
-				y2 : new_y 
-			});
+			polyline_end_set(svg_shotline_selected, new_x , new_y );
+			
 		};
 	};
+};
+
+function polyline_start_set(this_polyline, new_x, new_y) {
+	var line_points = this_polyline.attr("points")
+	
+	line_points[0] = new_x;
+	line_points[1] = new_y;
+		
+	this_polyline.attr({"points" : line_points });
+};
+
+function polyline_end_set(this_polyline, new_x, new_y) {
+	var line_points = this_polyline.attr("points")
+	
+	if (line_points.length == 4) {
+		line_points[2] = new_x;
+		line_points[3] = new_y;
+	} else if (line_points.length == 6) {
+		line_points[4] = new_x;
+		line_points[5] = new_y;
+	};
+	
+	this_polyline.attr({"points" : line_points });
 };
 
 var lineend_start = function( x, y, ev) {
@@ -308,9 +356,7 @@ var lineend_start = function( x, y, ev) {
 };
 
 var lineend_stop = function() {
-	
 	console.log("lineend moved")
-	
 };
 
 var linestart_move = function(dx,dy,x,y) {
@@ -346,10 +392,7 @@ var linestart_move = function(dx,dy,x,y) {
 				transform: this.data('origTransform') + (this.data('origTransform') ? "T" : "t") + [dx, dy]
 			});
 			
-			svg_shotline_selected.attr({
-				x1 : new_x ,
-				y1 : new_y 
-			});
+			polyline_start_set(svg_shotline_selected, new_x , new_y );
 		};
 	};
 };
