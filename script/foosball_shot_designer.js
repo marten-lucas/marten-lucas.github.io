@@ -20,10 +20,15 @@ function init_shotdesigner () {
 		});
 		
 	$( '[id^=btn_save_shot]' ).click( function() {
-			saveShot_btn_click(this);
+			saveShot_btn_click();
 		});
-		
+	
 	$( '[id^=btn_save_shot]' ).hide();
+	
+	$( '[id^=btn_delete_shot]' ).click( function() {
+			deleteShot_btn_click();
+		})
+	$( '[id^=btn_delete_shot]' ).hide();
 	
 	goalposition_set("3", true);
 	
@@ -91,7 +96,15 @@ function addShot_btn_click(btn) {
 };
 
 
-function saveShot_btn_click(btn) {
+function deleteShot_btn_click() {
+	var shot_delete = svg_shotline_selected;
+	
+	shotline_deselect();
+	
+	shot_delete.remove();
+};
+
+function saveShot_btn_click() {
 	if (edit_mode_active) {
 		shotline_deselect();
 	};
@@ -148,6 +161,7 @@ function shotline_select(trigger_shot) {
 	
 	
 	$( '[id^=btn_save_shot]' ).show();
+	$( '[id^=btn_delete_shot]' ).show();
 
 };
 
