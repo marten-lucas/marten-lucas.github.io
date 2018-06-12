@@ -133,9 +133,7 @@ function saveShot_btn_click() {
 };
 
 var  shotline_clicked = function() {
-	
-	shotline_select(this)
-	
+	shotline_select(this)	
 };
 
 function shotline_deselect () {
@@ -186,7 +184,7 @@ function shotline_select(trigger_shot) {
 	if (points.length == 6) {
 		var svg_linebank = s.select("#linebank");
 		svg_linebank.attr({ display : "inline" });   	
-		svg_linebank_position_set(trigger_shot)
+		linebank_position_set(trigger_shot)
 	};
 	
 	svg_shotline_selected = trigger_shot
@@ -231,17 +229,20 @@ function linestart_position_set(svg_shotline) {
 
 function linebank_position_set(svg_shotline) {
 	
-	var svg_linestart = s.select("#linestart");
-	var bb_linestart = svg_linestart.getBBox();
+	var svg_linebank = s.select("#linebank");
+	var bb_linebank = svg_linebank.getBBox();
 	
-	var new_x = ployline_point_get(svg_shotline,'start','x')
-	var new_y = ployline_point_get(svg_shotline,'start','y')
-	var dx = new_x - bb_linestart.cx ;
-	var dy = new_y - bb_linestart.cy;
-	var origTransform = svg_linestart.transform().local
+	var table_svg = s.select("#table_field");
+	var bb_table = table_svg.getBBox();
 	
-	svg_linestart.attr({
-						transform: origTransform + (origTransform ? "T" : "t") + [dx, dy]
+	
+	var new_x = ployline_point_get(svg_shotline,'bank','x')
+	
+	var dx = new_x - bb_linebank.cx ;
+	var origTransform = svg_linebank.transform().local
+	
+	svg_linebank.attr({
+						transform: origTransform + (origTransform ? "T" : "t") + [dx, 0]
 					});
 };
 
@@ -252,7 +253,7 @@ function ployline_point_get( this_polyline, point_type , axis ) {
 	if (point_type == "start") {
 		var index = 0
 	} else if (point_type == "bank") {
-		if (points.length == 4) {
+		if (points.length == 6) {
 			var index = 2 
 		};
 	} else if (point_type == "end") {
@@ -366,8 +367,7 @@ var linebank_move = function(dx,dy,x,y) {
 		}
 		
 		var new_x = x - this.data('shiftX') ;
-		var new_y =	y - this.data('shiftY');
-		
+				
 		var bb_svg = s.getBBox();
 		
 		
@@ -376,20 +376,13 @@ var linebank_move = function(dx,dy,x,y) {
 		} else {
 			var allow_move_x = false;	
 		};
-		
-		if ( new_y - this.data('radius') >= bb_svg.y && new_y + this.data('radius') <= bb_svg.y2 ) {
-			var allow_move_y = true;
-		} else {
-			var allow_move_y = false;	
-		};
 
-		if (allow_move_x && allow_move_y) {
+		if (allow_move_x ) {
 			this.attr({
-				transform: this.data('origTransform') + (this.data('origTransform') ? "T" : "t") + [dx, dy]
+				transform: this.data('origTransform') + (this.data('origTransform') ? "T" : "t") + [dx, 0]
 			});
 			
-			polyline_end_set(svg_shotline_selected, new_x , new_y );
-			polyline_reflection_set(svg_shotline_selected);
+			polyline_bank_set(svg_shotline_selected, new_x  );
 			
 		};
 	};
@@ -459,6 +452,17 @@ function polyline_end_set(this_polyline, new_x, new_y) {
 	this_polyline.attr({"points" : line_points });
 };
 
+function polyline_bank_set(this_polyline, new_x) {
+	var line_points = this_polyline.attr("points")
+
+	if (line_points.length == 6) {
+		line_points[2] = new_x;
+	};
+	
+	this_polyline.attr({"points" : line_points });
+	
+};
+
 function polyline_reflection_set(this_polyline) {
 	var line_points = this_polyline.attr("points")
 	
@@ -466,7 +470,11 @@ function polyline_reflection_set(this_polyline) {
 		var reflection_x =  reflection_x_get(line_points[0], line_points[1], line_points[4], line_points[5], line_points[3]);
 		line_points[2] = reflection_x;
 		
+		linebank_position_set(this_polyline);
+		
 		this_polyline.attr({"points" : line_points });
+		
+		
 	};
 };
 
@@ -501,7 +509,7 @@ var lineend_start = function( x, y, ev) {
 };
 
 var linebank_stop = function() {
-	console.log("lineend moved")
+	console.log("linebank moved")
 };
 
 var linebank_start = function( x, y, ev) {
@@ -510,16 +518,13 @@ var linebank_start = function( x, y, ev) {
 		if( (typeof x == 'object') && ( x.type == 'touchstart') ) {
 			x.preventDefault();
 			this.data('ox', x.changedTouches[0].clientX );
-			this.data('oy', x.changedTouches[0].clientY );  
 		}
-		var lineend_svg = s.select("#lineend");
-		var bb_lineend = lineend_svg.getBBox();
+		var linebank_svg = s.select("#linebank");
+		var bb_linebank = linebank_svg.getBBox();
 		
-		let shiftX = x - bb_lineend.cx;
-		let shiftY = y - bb_lineend.cy;
+		let shiftX = x - bb_linebank.cx;
 		this.data('shiftX', shiftX);
-		this.data('shiftY', shiftY);
-		this.data('radius', bb_lineend.width/2);
+		this.data('radius', bb_linebank.width/2);
 		this.data('origTransform', this.transform().local );
 		
 		
@@ -528,8 +533,6 @@ var linebank_start = function( x, y, ev) {
 		
 		this.data('tableinside_left',bb_table.x );
 		this.data('tableinside_right',bb_table.x2 );
-		this.data('tableinside_top', bb_table.y);
-		this.data('tableinside_buttom', bb_table.y2);
 	
 	};
 };
