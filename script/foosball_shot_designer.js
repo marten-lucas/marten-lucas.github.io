@@ -1,7 +1,5 @@
 var number_goalpositions 
 var s
-var visible_goalposition_svg
-var visible_goalposition_id
 var svg_shotlayer 
 var edit_mode_active = false
 var svg_shotline_selected
@@ -36,6 +34,8 @@ function init_shotdesigner () {
 		})
 	$( '[id^=btn_delete_shot]' ).hide();
 	
+	
+	
 	goalposition_set("3", true);
 	
 	s.select('#lineend').drag (lineend_move, lineend_start, lineend_stop )
@@ -44,7 +44,6 @@ function init_shotdesigner () {
 	
 	s.select('#linebank').drag (linebank_move, linebank_start, linebank_stop )
 };
-
 
 
 
@@ -57,29 +56,6 @@ function goal_position_toggle() {
 	goalposition_set(number_pos);
 };
 			
-function goalposition_show( zone_id ) {
-	var player_id = zone_id.substr(0,2);
-	var opposite_player_id
-	
-	if (player_id=="P1") {
-		opposite_player_id = "P2";
-	} else {
-		opposite_player_id = "P1";
-	};
-	
-	var layer_name = opposite_player_id + "_goal_" + number_goalpositions + "pos"
-	
-	var goal_position_svg = s.select("#" + layer_name);
-	goal_position_svg.attr({ display : "inline" });     
-	visible_goalposition_svg = goal_position_svg;
-	visible_goalposition_id = layer_name;
-}
-
-function goalposition_hide() {
-	visible_goalposition_svg.attr({ display : "none" });   
-	visible_goalposition_svg = "undefined";
-	visible_goalposition_id	= "undefined";
-}
 
 function goalposition_set( positions, force_toggle ) {
 	force_toggle = force_toggle || false;
@@ -299,9 +275,9 @@ function shot_defaultadd(shot_type) {
 	
 
 	if (goal_id.substring(0,2)=="P1") {
-		var target_x = bb_target.x + 40
+		var target_x = bb_target.x + 32.5
 	} else {
-		var target_x = bb_target.x2 + 20
+		var target_x = bb_target.x2 + 32.5
 	};
 	
 	
@@ -433,16 +409,16 @@ var lineend_move = function(dx,dy,x,y) {
 		var new_x = x - this.data('shiftX') ;
 		var new_y =	y - this.data('shiftY');
 		
-		var bb_svg = s.getBBox();
+		var svg_field = s.select("#table_field");
+		var bb_field = svg_field.getBBox();
 		
-		
-		if ( new_x - this.data('radius') >= bb_svg.x && new_x + this.data('radius') <= bb_svg.x2 ) {
+		if ( new_x  >= bb_field.x && new_x  <= bb_field.x2 ) {
 			var allow_move_x = true;
 		} else {
 			var allow_move_x = false;	
 		};
 		
-		if ( new_y - this.data('radius') >= bb_svg.y && new_y + this.data('radius') <= bb_svg.y2 ) {
+		if ( new_y  >= bb_field.y && new_y  <= bb_field.y2 ) {
 			var allow_move_y = true;
 		} else {
 			var allow_move_y = false;	
@@ -455,9 +431,13 @@ var lineend_move = function(dx,dy,x,y) {
 			
 			polyline_end_set(svg_shotline_selected, new_x , new_y );
 			polyline_reflection_set(svg_shotline_selected);
+			
 		};
 	};
 };
+
+ 
+
 
 function polyline_start_set(this_polyline, new_x, new_y) {
 	var line_points = this_polyline.attr("points")
@@ -510,7 +490,8 @@ function polyline_reflection_set(this_polyline) {
 
 var lineend_start = function( x, y, ev) {
 	if (edit_mode_active) {
-	
+		
+		
 		if( (typeof x == 'object') && ( x.type == 'touchstart') ) {
 			x.preventDefault();
 			this.data('ox', x.changedTouches[0].clientX );
@@ -568,6 +549,7 @@ var linebank_start = function( x, y, ev) {
 };
 
 var lineend_stop = function() {
+
 	console.log("lineend moved")
 };
 
