@@ -161,6 +161,11 @@ function shotline_deselect () {
 
 function shotline_select(trigger_shot) {
 	
+	if (svg_shotline_selected) {
+		shotline_deselect();
+	};
+	
+	
 	edit_mode_active = true
 	
 	var svg_goal_p1 = s.select("#P1_goal_" + number_goalpositions + "pos");
