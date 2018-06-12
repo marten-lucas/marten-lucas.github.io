@@ -27,13 +27,14 @@ function init_shotdesigner () {
 			saveShot_btn_click();
 		});
 	
-	$( '[id^=btn_save_shot]' ).hide();
+
 	
 	$( '[id^=btn_delete_shot]' ).click( function() {
 			deleteShot_btn_click();
 		})
-	$( '[id^=btn_delete_shot]' ).hide();
 	
+	$( '[id^=btn_delete_shot]' ).hide();
+	$( '[id^=btn_save_shot]' ).hide();	
 	
 	
 	goalposition_set("3", true);
@@ -90,19 +91,96 @@ function addShot_btn_click(btn) {
 	var shot_type = btn.id.replace("btn_addshot_","");
 	
 	if (edit_mode_active) {
-		// switch 
+		shotline_change_type(svg_shotline_selected, shot_type);
 	} else {
 		svg_default_shot = shot_defaultadd(shot_type);
 		shotline_select(svg_default_shot);
 	};	
 };
 
+function shotline_change_type (svg_shotline, shotline_type_new) {
+	var shotline_type_old = shot_type_get(svg_shotline.id)
+	
+	var re_bank = new RegExp("bank_");
+	
+	if (re_bank.test(shotline_type_old) && re_bank.test(shotline_type_new))
+		polyline_bank_switch(svg_shotline);
+	else if (!re_bank.test(shotline_type_old) && re_bank.test(shotline_type_new)) {
+		polyline_bank_add(svg_shotline, shotline_type_new);
+	} else if ((re_bank.test(shotline_type_old) && !re_bank.test(shotline_type_new))) {
+		polyline_bank_delete(svg_shotline)
+	};
+	
+	svg_shotline.id = svg_shotline.id.replace(shotline_type_old, shotline_type_new);
+	addshot_btn_visible_set(svg_shotline.id);
+};
+
+function polyline_bank_delete(this_polyline) {
+	var line_points = this_polyline.attr("points")
+	
+	if (line_points.length == 6) {
+		var new_line_points = new Array
+		
+		new_line_points[0] = line_points[0]
+		new_line_points[1] = line_points[1]
+		new_line_points[2] = line_points[4]
+		new_line_points[3] = line_points[5]
+		
+		this_polyline.attr({"points" : new_line_points }); 
+	};
+};
+
+function polyline_bank_add(this_polyline, shot_type) {
+	var line_points = this_polyline.attr("points")
+	
+	var target_x = polyline_point_get(this_polyline,"end","x");
+	var target_y = polyline_point_get(this_polyline,"end","y");
+	
+	var table_svg = s.select("#table_field");
+	var bb_table = table_svg.getBBox();
+	
+	var ball_svg = s.select("#ball");
+	var bb_ball = ball_svg.getBBox();
+	
+	if (shot_type == "bank_far") {
+		var reflection_y = bb_table.y
+		var reflection_x = reflection_x_get(bb_ball.cx, bb_ball.cy, target_x, target_y, reflection_y)
+		
+	} else if (shot_type == "bank_near") {
+		var reflection_y = bb_table.y2	
+		var reflection_x = reflection_x_get(bb_ball.cx, bb_ball.cy, target_x, target_y, reflection_y)
+	};
+	
+	if (line_points.length == 4) {
+		line_points[4] = line_points[2]
+		line_points[5] = line_points[3]
+		line_points[2] = reflection_x
+		line_points[3] = reflection_y
+		
+		this_polyline.attr({"points" : line_points }); 
+	};
+};
+
+function polyline_bank_switch(this_polyline) {
+	var line_points = this_polyline.attr("points")
+	var svg_field = s.select("#table_field");
+	var bb_field = svg_field.getBBox()
+	
+	if (line_points.length == 6)
+			if (line_points[3] == bb_field.y ) {
+				line_points[3] = bb_field.y2
+			} else if (line_points[3] == bb_field.y2 ){
+				line_points[3] = bb_field.y
+			};
+		
+	this_polyline.attr({"points" : line_points });
+	
+};
 
 function deleteShot_btn_click() {
 	var shot_delete = svg_shotline_selected;
 	
 	shotline_deselect();
-	
 	shot_delete.remove();
 };
 
@@ -138,7 +216,9 @@ function shotline_deselect () {
 	
 	$( '[id^=btn_save_shot]' ).hide();
 	$( '[id^=btn_delete_shot]' ).hide();
-
+	
+	addshot_btn_visible_set(undefined);
+	
 	svg_shotline_selected = undefined
 	
 };
@@ -149,8 +229,9 @@ function shotline_select(trigger_shot) {
 		shotline_deselect();
 	};
 	
-	
 	edit_mode_active = true
+	
+	addshot_btn_visible_set(trigger_shot.id)
 	
 	var svg_goal_p1 = s.select("#P1_goal_" + number_goalpositions + "pos");
 	svg_goal_p1.attr({ display : "inline" });      
@@ -182,6 +263,38 @@ function shotline_select(trigger_shot) {
 	$( '[id^=btn_save_shot]' ).show();
 	$( '[id^=btn_delete_shot]' ).show();
 
+};
+
+function addshot_btn_visible_set(shotline_id) {
+	
+	
+	if (shotline_id) {
+		var shot_type =  shot_type_get(shotline_id);
+	} else {
+		var shot_type = "undefined";
+	};
+	 
+	var re_shot_type = new RegExp(shot_type);
+
+	$('[id^=btn_addshot_]').each(function(i, btn) {
+		if (re_shot_type.test(btn.id)) {
+			$("#" + btn.id).hide();
+		} else {
+			$("#" + btn.id).show();
+		};
+	});	
+};
+
+function shot_type_get(shotline_id) {
+	var shotline_id_split = shotline_id.split("_")
+	
+	if (shotline_id_split.length == 5) {
+		var shot_type = shotline_id_split[3] + "_" + shotline_id_split[4]
+	} else if ((shotline_id_split.length == 4)) {
+		var shot_type = shotline_id_split[3]
+	};
+	
+	return shot_type;
 };
 
 function lineend_position_set(svg_shotline) {
@@ -306,7 +419,7 @@ function shot_defaultadd(shot_type) {
 	
 	svg_shotline.attr({strokeWidth:ball_diameter,stroke:"yellow", fill: "none" ,strokeLinecap:"butt"});
 	
-	var unique_id = "user_shot_" + svg_shotline.id;
+	var unique_id = "user_shot_" + svg_shotline.id + "_" + shot_type;
 	
 	svg_shotline.id = unique_id;
 	

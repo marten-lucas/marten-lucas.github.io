@@ -230,9 +230,9 @@ function tilt_rods( player1 , player2 ) {
 function field_zone_id_get(x,y) {
 	var zone_id 
 	$('[id$=_zone]').each(function(i, zone) {
-	var zone_svg = s.select("#" + zone.id);
-	var zone_bb = zone_svg.getBBox()
-	if (Snap.path.isPointInsideBBox( zone_bb , x, y)) {
+		var zone_svg = s.select("#" + zone.id);
+		var zone_bb = zone_svg.getBBox()
+		if (Snap.path.isPointInsideBBox( zone_bb , x, y)) {
 			zone_id = zone.id;
 		};
 	});	
