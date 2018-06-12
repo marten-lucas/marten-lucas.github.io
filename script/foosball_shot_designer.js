@@ -19,6 +19,8 @@ function init_shotdesigner () {
 			goal_position_toggle();
 		});
 	
+	$( '#check_5goalpos' ).bootstrapToggle('off')
+	
 	$( '[id^=btntoggle_goalpos]' ).click( function() {
 			goal_position_toggle(this);
 		});
@@ -111,10 +113,12 @@ function goalposition_set( positions, force_toggle ) {
 function addShot_btn_click(btn) {
 	var shot_type = btn.id.replace("btn_addshot_","");
 	
-	svg_default_shot = shot_defaultadd(shot_type);
-	
-	shotline_select(svg_default_shot);
-	
+	if (edit_mode_active) {
+		// switch 
+	} else {
+		svg_default_shot = shot_defaultadd(shot_type);
+		shotline_select(svg_default_shot);
+	};	
 };
 
 
@@ -157,6 +161,10 @@ function shotline_deselect () {
 	svg_linebank.attr({ display : "none" });   
 	
 	$( '[id^=btn_save_shot]' ).hide();
+	$( '[id^=btn_delete_shot]' ).hide();
+
+	svg_shotline_selected = undefined
+	
 };
 
 function shotline_select(trigger_shot) {
@@ -200,8 +208,8 @@ function lineend_position_set(svg_shotline) {
 	var svg_lineend = s.select("#lineend");
 	var bb_lineend = svg_lineend.getBBox();
 	
-	var new_x = ployline_point_get(svg_shotline,'end','x')
-	var new_y = ployline_point_get(svg_shotline,'end','y')
+	var new_x = polyline_point_get(svg_shotline,'end','x')
+	var new_y = polyline_point_get(svg_shotline,'end','y')
 	var dx = new_x - bb_lineend.cx ;
 	var dy = new_y - bb_lineend.cy;
 	var origTransform = svg_lineend.transform().local
@@ -216,8 +224,8 @@ function linestart_position_set(svg_shotline) {
 	var svg_linestart = s.select("#linestart");
 	var bb_linestart = svg_linestart.getBBox();
 	
-	var new_x = ployline_point_get(svg_shotline,'start','x')
-	var new_y = ployline_point_get(svg_shotline,'start','y')
+	var new_x = polyline_point_get(svg_shotline,'start','x')
+	var new_y = polyline_point_get(svg_shotline,'start','y')
 	var dx = new_x - bb_linestart.cx ;
 	var dy = new_y - bb_linestart.cy;
 	var origTransform = svg_linestart.transform().local
@@ -236,7 +244,7 @@ function linebank_position_set(svg_shotline) {
 	var bb_table = table_svg.getBBox();
 	
 	
-	var new_x = ployline_point_get(svg_shotline,'bank','x')
+	var new_x = polyline_point_get(svg_shotline,'bank','x')
 	
 	var dx = new_x - bb_linebank.cx ;
 	var origTransform = svg_linebank.transform().local
@@ -247,7 +255,7 @@ function linebank_position_set(svg_shotline) {
 };
 
 
-function ployline_point_get( this_polyline, point_type , axis ) {
+function polyline_point_get( this_polyline, point_type , axis ) {
 	var points = this_polyline.attr("points")
 	
 	if (point_type == "start") {
@@ -345,6 +353,21 @@ function reflection_x_get(start_x, start_y, target_x, target_y, reflection_y) {
 	return reflection_x 
 };
 
+function reflection_target_y_get(start_x, start_y, reflection_x, reflection_y, target_x) {
+	
+	var delta_x = target_x - start_x ;
+	var delta_start_x = start_x - reflection_x
+	var ratio_x = delta_start_x / (delta_x)
+	
+	var offset_reflection_y =  delta_x * ( 1 - Math.abs(ratio_x))
+	if (reflection_y > start_y) {
+		var target_y = parseFloat(reflection_y) + parseFloat(offset_reflection_y);
+	} else {
+		var target_y = parseFloat(reflection_y) - parseFloat(offset_reflection_y);
+	};
+	return target_y 
+};
+
 function default_targetgoal_id_get(ball_zone) {
 	if (ball_zone.substring(0,2)=="P1") {
 		var oppenent_id = "P2"
@@ -383,6 +406,15 @@ var linebank_move = function(dx,dy,x,y) {
 			});
 			
 			polyline_bank_set(svg_shotline_selected, new_x  );
+			start_x = polyline_point_get(svg_shotline_selected,"start","x");
+			start_y = polyline_point_get(svg_shotline_selected,"start","y");
+			target_x = polyline_point_get(svg_shotline_selected,"end","x");
+			reflection_y = polyline_point_get(svg_shotline_selected,"bank","y");
+			
+			new_target_y = reflection_target_y_get(start_x, start_y, new_x, reflection_y, target_x)
+			
+			polyline_end_set(svg_shotline_selected, target_x, new_target_y);
+			lineend_position_set(svg_shotline_selected);
 			
 		};
 	};
@@ -423,11 +455,9 @@ var lineend_move = function(dx,dy,x,y) {
 			
 			polyline_end_set(svg_shotline_selected, new_x , new_y );
 			polyline_reflection_set(svg_shotline_selected);
-			
 		};
 	};
 };
-
 
 function polyline_start_set(this_polyline, new_x, new_y) {
 	var line_points = this_polyline.attr("points")
