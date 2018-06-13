@@ -196,7 +196,7 @@ function saveShot_btn_click() {
 
 function cancelShot_btn_click() {
 	if (svg_edit_backup && svg_shotline_selected) {
-		shotline_deselect (true)		
+		shotline_deselect (true)	
 	};
 };
 
@@ -211,7 +211,8 @@ function shotline_deselect (cancel) {
 		if (cancel) {
 			svg_edit_backup.id = svg_shotline_selected.id
 			svg_shotline_selected.remove();
-			svg_edit_backup.attr({ display : "inline" });		
+			svg_edit_backup.attr({ display : "inline" });	
+			svg_edit_backup.click(shotline_clicked)					
 		} else {
 			svg_edit_backup.remove();
 		};
