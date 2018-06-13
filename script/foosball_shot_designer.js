@@ -131,6 +131,9 @@ function polyline_bank_delete(this_polyline) {
 		new_line_points[3] = line_points[5]
 		
 		this_polyline.attr({"points" : new_line_points }); 
+		
+		var svg_linebank = s.select("#linebank");
+		svg_linebank.attr({ display : "none" }); 
 	};
 };
 
@@ -162,7 +165,12 @@ function polyline_bank_add(this_polyline, shot_type) {
 		line_points[3] = reflection_y
 		
 		this_polyline.attr({"points" : line_points }); 
+		
+		var svg_linebank = s.select("#linebank");
+		svg_linebank.attr({ display : "inline" }); 
+		linebank_position_set(this_polyline)
 	};
+	
 };
 
 function polyline_bank_switch(this_polyline) {
@@ -483,9 +491,14 @@ function reflection_target_y_get(start_x, start_y, reflection_x, reflection_y, t
 	var ratio_x = delta_start_x / (delta_x)
 	
 	var offset_reflection_y =  delta_x * ( 1 - Math.abs(ratio_x))
-	if (reflection_y > start_y) {
+	
+	var shot_type = shot_type_get(svg_shotline_selected.id)
+	
+	if (shot_type == "bank_near") {
+		// bank_near
 		var target_y = parseFloat(reflection_y) - parseFloat(offset_reflection_y);
-	} else {
+	} else if (shot_type == "bank_far") {
+		// bank_far
 		var target_y = parseFloat(reflection_y) + parseFloat(offset_reflection_y);
 	};
 	return target_y 
