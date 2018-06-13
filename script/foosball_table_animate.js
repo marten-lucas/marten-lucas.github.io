@@ -14,16 +14,12 @@ s = Snap("#foosball_table");
 	Snap.load("foosball_table.svg", function(f) {
 		s.append(f);
 		
-		// add onclick function to wildcard ids "_move_"
-		// $( '[id*=_move_]' ).click( function() {
-			// rod_move(this);
-		// });
 		
-		$( '[id*=_move_]' ).on( "mousedown", function( e ) {
+		$( '[id*=_move_]' ).on( "mousedown touchstart", function( e ) {
 			rod_move_starthold(this);
 		});
 		
-		$( '[id*=_move_]' ).on( "mouseup", function( e ) {
+		$( '[id*=_move_]' ).on( "mouseup touchend", function( e ) {
 			rod_move_stophold(this);
 		});
 		
@@ -348,9 +344,11 @@ function is_P2 (rod_id) {
 function rod_move(rod_arrow) {
 	
 	// indicate action by changing fill to red - does not work
-	var svg_arrow = s.select("#" + rod_arrow.id)
-	var arrow_fill_bak = svg_arrow.attr("fill");
-	svg_arrow.attr('fill', 'red')
+	var svg_arrow = s.select("#" + rod_arrow.id);
+	if (svg_arrow) {
+		var arrow_fill_bak = svg_arrow.attr("fill");
+		svg_arrow.attr('fill', 'red')
+	};
 	
 	
 	var rod_id = rod_id_get(rod_arrow); 
@@ -441,13 +439,16 @@ function rod_move(rod_arrow) {
 	};
 	arrow_opposite.attr({ display : "inline" });   
 	
-	svg_arrow.attr('fill', arrow_fill_bak)
+	if (svg_arrow) {
+		svg_arrow.attr('fill', arrow_fill_bak)
+	};
 };
 
 var rod_move_interval
 
 var rod_move_starthold = function(rod_arrow) {
-	rod_move_interval = setInterval( rod_move_interval_action , 200, rod_arrow);
+	rod_move(rod_arrow);
+	rod_move_interval = setInterval( rod_move_interval_action , 100, rod_arrow);
 };
 
 function rod_move_interval_action(rod_arrow) {
