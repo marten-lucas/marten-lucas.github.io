@@ -15,9 +15,18 @@ s = Snap("#foosball_table");
 		s.append(f);
 		
 		// add onclick function to wildcard ids "_move_"
-		$( '[id*=_move_]' ).click( function() {
-			rod_move(this);
+		// $( '[id*=_move_]' ).click( function() {
+			// rod_move(this);
+		// });
+		
+		$( '[id*=_move_]' ).on( "mousedown", function( e ) {
+			rod_move_starthold(this);
 		});
+		
+		$( '[id*=_move_]' ).on( "mouseup", function( e ) {
+			rod_move_stophold(this);
+		});
+		
 		
 		$( '[id$=_up], [id$=_back], [id$=_front], [id$=_down]' ).click( function() {
 			rod_tilt_toggle(this);
@@ -338,6 +347,12 @@ function is_P2 (rod_id) {
 
 function rod_move(rod_arrow) {
 	
+	// indicate action by changing fill to red - does not work
+	var svg_arrow = s.select("#" + rod_arrow.id)
+	var arrow_fill_bak = svg_arrow.attr("fill");
+	svg_arrow.attr('fill', 'red')
+	
+	
 	var rod_id = rod_id_get(rod_arrow); 
 		
 	var step_size = 3.75/2;
@@ -348,6 +363,7 @@ function rod_move(rod_arrow) {
 	
 	var re_rod_direction = new RegExp("(away|toward)$");
 	var rod_direction = rod_id.match(re_rod_direction)[1];
+	
 	
 	
 	
@@ -390,7 +406,8 @@ function rod_move(rod_arrow) {
 			
 			if (step_size > dist_to_wall) {
 				step_size= dist_to_wall;
-				arrow_clicked.attr({ display : "none" });   
+				arrow_clicked.attr({ display : "none" });  
+				rod_move_stophold();
 			};
 			
 			matrix.f = matrix.f + step_size * direction_factor
@@ -423,8 +440,24 @@ function rod_move(rod_arrow) {
 	var arrow_opposite = s.select("#" + rod_name + "_move_toward");
 	};
 	arrow_opposite.attr({ display : "inline" });   
+	
+	svg_arrow.attr('fill', arrow_fill_bak)
+};
 
+var rod_move_interval
 
+var rod_move_starthold = function(rod_arrow) {
+	rod_move_interval = setInterval( rod_move_interval_action , 200, rod_arrow);
+};
+
+function rod_move_interval_action(rod_arrow) {
+	console.log("move: " + rod_arrow.id + ":" + Date.now())
+	rod_move(rod_arrow);
+}
+
+function rod_move_stophold () {
+	console.log("Stop hold ");
+	clearInterval(rod_move_interval);
 };
 
 function rod_tilt_set( rod_id , new_tilt ) {
