@@ -450,14 +450,14 @@ function reflection_x_get(start_x, start_y, target_x, target_y, reflection_y) {
 function reflection_target_y_get(start_x, start_y, reflection_x, reflection_y, target_x) {
 	
 	var delta_x = target_x - start_x ;
-	var delta_start_x = start_x - reflection_x
+	var delta_start_x = reflection_x - start_x;
 	var ratio_x = delta_start_x / (delta_x)
 	
 	var offset_reflection_y =  delta_x * ( 1 - Math.abs(ratio_x))
 	if (reflection_y > start_y) {
-		var target_y = parseFloat(reflection_y) + parseFloat(offset_reflection_y);
-	} else {
 		var target_y = parseFloat(reflection_y) - parseFloat(offset_reflection_y);
+	} else {
+		var target_y = parseFloat(reflection_y) + parseFloat(offset_reflection_y);
 	};
 	return target_y 
 };
@@ -487,8 +487,14 @@ var linebank_move = function(dx,dy,x,y) {
 				
 		var bb_svg = s.getBBox();
 		
+		var svg_linestart = s.select("#linestart");
+		var bb_linestart = svg_linestart.getBBox();
+		var svg_lineend = s.select("#lineend");
+		var bb_lineend = svg_lineend.getBBox();
 		
-		if ( new_x - this.data('radius') >= bb_svg.x && new_x + this.data('radius') <= bb_svg.x2 ) {
+		
+		
+		if ( new_x - this.data('radius') >= bb_linestart.cx && new_x + this.data('radius') <= bb_lineend.cx ) {
 			var allow_move_x = true;
 		} else {
 			var allow_move_x = false;	
