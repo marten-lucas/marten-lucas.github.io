@@ -2,7 +2,8 @@ var number_goalpositions
 var s
 var svg_shotlayer 
 var edit_mode_active = false
-var svg_shotline_selected
+var svg_shotline_selected 
+var svg_edit_backup
 
 function init_shotdesigner () {
 	s = Snap("#foosball_table");
@@ -28,13 +29,16 @@ function init_shotdesigner () {
 		});
 	
 
-	
 	$( '[id^=btn_delete_shot]' ).click( function() {
 			deleteShot_btn_click();
 		})
 	
-	$( '[id^=btn_delete_shot]' ).hide();
-	$( '[id^=btn_save_shot]' ).hide();	
+	
+	$( '[id^=btn_cancel_shot]' ).click( function() {
+			cancelShot_btn_click();
+		})
+	
+	$( '[id^=btn_edit_shot]' ).hide();
 	
 	
 	goalposition_set("3", true);
@@ -127,6 +131,9 @@ function polyline_bank_delete(this_polyline) {
 		new_line_points[3] = line_points[5]
 		
 		this_polyline.attr({"points" : new_line_points }); 
+		
+		var svg_linebank = s.select("#linebank");
+		svg_linebank.attr({ display : "none" }); 
 	};
 };
 
@@ -158,7 +165,12 @@ function polyline_bank_add(this_polyline, shot_type) {
 		line_points[3] = reflection_y
 		
 		this_polyline.attr({"points" : line_points }); 
+		
+		var svg_linebank = s.select("#linebank");
+		svg_linebank.attr({ display : "inline" }); 
+		linebank_position_set(this_polyline)
 	};
+	
 };
 
 function polyline_bank_switch(this_polyline) {
@@ -190,11 +202,32 @@ function saveShot_btn_click() {
 	};
 };
 
+function cancelShot_btn_click() {
+	if (svg_edit_backup && svg_shotline_selected) {
+		shotline_deselect (true)	
+	};
+};
+
 var  shotline_clicked = function() {
 	shotline_select(this)	
 };
 
-function shotline_deselect () {
+function shotline_deselect (cancel) {
+	cancel = cancel || false;
+
+	if (svg_edit_backup) { 
+		if (cancel) {
+			svg_edit_backup.id = svg_shotline_selected.id
+			svg_shotline_selected.remove();
+			svg_edit_backup.attr({ display : "inline" });	
+			svg_edit_backup.click(shotline_clicked)					
+		} else {
+			svg_edit_backup.remove();
+		};
+		svg_edit_backup = undefined
+	}
+	
+	
 	edit_mode_active = false
 	
 	var svg_goal_p1 = s.select("#P1_goal_" + number_goalpositions + "pos");
@@ -214,8 +247,7 @@ function shotline_deselect () {
 	var svg_linebank = s.select("#linebank");
 	svg_linebank.attr({ display : "none" });   
 	
-	$( '[id^=btn_save_shot]' ).hide();
-	$( '[id^=btn_delete_shot]' ).hide();
+	$( '[id^=btn_edit_shot]' ).hide();
 	
 	addshot_btn_visible_set(undefined);
 	
@@ -223,7 +255,13 @@ function shotline_deselect () {
 	
 };
 
+
+
 function shotline_select(trigger_shot) {
+	
+	svg_edit_backup = trigger_shot.clone();
+	svg_edit_backup.attr({ display : "none" });  
+	svg_edit_backup.id = trigger_shot.id + "_bak";
 	
 	if (svg_shotline_selected) {
 		shotline_deselect();
@@ -260,8 +298,7 @@ function shotline_select(trigger_shot) {
 	svg_shotline_selected = trigger_shot
 	
 	
-	$( '[id^=btn_save_shot]' ).show();
-	$( '[id^=btn_delete_shot]' ).show();
+	$( '[id^=btn_edit_shot]' ).show();
 
 };
 
@@ -450,14 +487,19 @@ function reflection_x_get(start_x, start_y, target_x, target_y, reflection_y) {
 function reflection_target_y_get(start_x, start_y, reflection_x, reflection_y, target_x) {
 	
 	var delta_x = target_x - start_x ;
-	var delta_start_x = start_x - reflection_x
+	var delta_start_x = reflection_x - start_x;
 	var ratio_x = delta_start_x / (delta_x)
 	
 	var offset_reflection_y =  delta_x * ( 1 - Math.abs(ratio_x))
-	if (reflection_y > start_y) {
-		var target_y = parseFloat(reflection_y) + parseFloat(offset_reflection_y);
-	} else {
+	
+	var shot_type = shot_type_get(svg_shotline_selected.id)
+	
+	if (shot_type == "bank_near") {
+		// bank_near
 		var target_y = parseFloat(reflection_y) - parseFloat(offset_reflection_y);
+	} else if (shot_type == "bank_far") {
+		// bank_far
+		var target_y = parseFloat(reflection_y) + parseFloat(offset_reflection_y);
 	};
 	return target_y 
 };
@@ -487,8 +529,14 @@ var linebank_move = function(dx,dy,x,y) {
 				
 		var bb_svg = s.getBBox();
 		
+		var svg_linestart = s.select("#linestart");
+		var bb_linestart = svg_linestart.getBBox();
+		var svg_lineend = s.select("#lineend");
+		var bb_lineend = svg_lineend.getBBox();
 		
-		if ( new_x - this.data('radius') >= bb_svg.x && new_x + this.data('radius') <= bb_svg.x2 ) {
+		
+		
+		if ( new_x - this.data('radius') >= bb_linestart.cx && new_x + this.data('radius') <= bb_lineend.cx ) {
 			var allow_move_x = true;
 		} else {
 			var allow_move_x = false;	
