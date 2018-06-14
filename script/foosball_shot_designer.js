@@ -388,10 +388,10 @@ function shot_defaultadd(shot_type) {
 	var svg_taget = s.select("#" + targetbox_name);
 	var bb_target = svg_taget.getBBox();
 
-	// MAGIC VALUE!!!!
+	// @@todo MAGIC VALUE!!!!
 	var target_y = bb_target.cy - 50
 	
-
+	// @@todo MAGIC VALUE!!!!
 	if (goal_id.substring(0,2)=="P1") {
 		var target_x = bb_target.x + 32.5
 	} else {
