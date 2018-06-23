@@ -5,8 +5,16 @@ function init_save_load () {
 	$( '#btn_save_board' ).click( function() {
 			saveBoard_btn_click();
 		});
+
+	$( '#btn_export_board' ).click( function() {
+			exportBoard_btn_click();
+		});
 };
 
+
+function exportBoard_btn_click() {
+	board_export_png();
+};
 
 function saveBoard_btn_click() {
 	rods_hide()
@@ -48,3 +56,51 @@ function rods_show() {
 		this_rod_svg.attr({ display : "inline" });  
 	});	
 };
+
+var export_canvas = document.getElementById("export_canvas");
+
+function board_export_png() {
+	export_canvas.style.display="inline";
+	rods_hide()
+	
+	var svgText = document.getElementById("foosball_table").outerHTML;
+	var ctxt = export_canvas.getContext("2d");
+	drawInlineSVG(ctxt, svgText, save_URL_local);
+	
+	rods_show()
+	export_canvas.style.display="none";
+};
+
+var save_URL_local = function () {
+	// Construct the <a> element
+  var link = document.createElement("a");
+  link.download = "foosboard_export.png";
+  // Construct the uri
+  link.href = export_canvas.toDataURL();
+  document.body.appendChild(link);
+  link.click();
+  // Cleanup the DOM
+  document.body.removeChild(link);
+};
+
+function drawInlineSVG(ctx, rawSVG, callback) {
+
+    var svg = new Blob([rawSVG], {type:"image/svg+xml;charset=utf-8"}),
+        domURL = self.URL || self.webkitURL || self,
+        url = domURL.createObjectURL(svg),
+        img = new Image;
+    
+    img.onload = function () {
+		bb_table = s.getBBox();
+		
+		export_canvas.width = bb_table.width
+		export_canvas.height = bb_table.height
+		
+        ctx.drawImage(this, 0, 0);     
+        domURL.revokeObjectURL(url);
+        callback(this);
+    };
+    
+    img.src = url;
+;}
+
