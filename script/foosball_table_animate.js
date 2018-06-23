@@ -38,6 +38,8 @@ s = Snap("#foosball_table");
 		s.select('#ball').drag (ball_move, ball_start, ball_stop )
 		
 		init_shotdesigner();
+		
+		init_save_load();
 	});
 	
 };
@@ -469,17 +471,17 @@ function rod_tilt_set( rod_id , new_tilt ) {
 	if (tilts.includes(new_tilt) && tilt != new_tilt) {
 		var new_tilt_name = rod_id + "_" + new_tilt;
 		$(rod_selector).each(function(i, tilt) {
-		
-		var tilt_svg = s.select("#" + tilt.id);
 			
-		if (tilt.id == new_tilt_name) {
-			tilt_svg.attr({ display : "inline" }); 
-		} else {
-			tilt_svg.attr({ display : "none" });   
-		};
-		
-		tilt_positions_set(new_tilt_name);
-	});
+			var tilt_svg = s.select("#" + tilt.id);
+				
+			if (tilt.id == new_tilt_name) {
+				tilt_svg.attr({ display : "inline" }); 
+			} else {
+				tilt_svg.attr({ display : "none" });   
+			};
+			
+			tilt_positions_set(new_tilt_name);
+		});
 	}else if (new_tilt == "lastdown") {
 		
 		
