@@ -1,4 +1,5 @@
 .foosball_table { 
+	/* @@TODO: Image does not scale correctly (should be max width & height to ratio */
     width: 100%;
 	height: auto;
 	max-height: 100%
