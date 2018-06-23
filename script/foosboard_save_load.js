@@ -9,8 +9,15 @@ function init_save_load () {
 	$( '#btn_export_board' ).click( function() {
 			exportBoard_btn_click();
 		});
+		
+	$( '#btn_reset_board' ).click( function() {
+			resetBoard_btn_click();
+		});
 };
 
+function resetBoard_btn_click () {
+	location.reload(false); 
+};
 
 function exportBoard_btn_click() {
 	board_export_png();
@@ -93,6 +100,7 @@ function drawInlineSVG(ctx, rawSVG, callback) {
     img.onload = function () {
 		bb_table = s.getBBox();
 		
+		// @@TODO image is not sized correctly
 		export_canvas.width = bb_table.width
 		export_canvas.height = bb_table.height
 		
