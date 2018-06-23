@@ -15,11 +15,11 @@ s = Snap("#foosball_table");
 		s.append(f);
 		
 		
-		$( '[id*=_move_]' ).on( "mousedown touchstart", function( e ) {
+		$( '[id*=_move_] , [id*=_movebox_]' ).on( "mousedown touchstart", function( e ) {
 			rod_move_starthold(this);
 		});
 		
-		$( '[id*=_move_]' ).on( "mouseup touchend", function( e ) {
+		$( '[id*=_move_] , [id*=_movebox_]' ).on( "mouseup touchend", function( e ) {
 			rod_move_stophold(this);
 		});
 		
