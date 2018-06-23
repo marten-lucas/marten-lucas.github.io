@@ -9,13 +9,17 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="630"
-   height="461.85956"
+   width="100%"
+   height="100%"
    id="svg2"
    version="1.1"
    inkscape:version="0.92.2 (5c3e80d, 2017-08-06)"
    sodipodi:docname="foosball_table.svg"
-   title="Foosalytics v1.0">
+   title="Foosalytics v1.0"
+   viewbox="0 0 600 460"
+   preserveAspectRatio="xMidYMid meet">
+  <title
+     id="title1382">foosboard 1.0</title>
   <defs
      id="defs4">
     <marker
@@ -379,8 +383,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.5972394"
-     inkscape:cx="315.90285"
-     inkscape:cy="240.98283"
+     inkscape:cx="198.62569"
+     inkscape:cy="236.77915"
      inkscape:document-units="px"
      showgrid="true"
      inkscape:window-width="1600"
@@ -408,22 +412,22 @@
        visible="true"
        enabled="true"
        snapvisiblegridlinesonly="true"
-       originx="32.510159"
-       originy="-540.08766"
+       originx="17.597115"
+       originy="-544.29134"
        spacingx="1"
        spacingy="1" />
     <sodipodi:guide
        orientation="0,1"
-       position="852.51016,1599.9123"
+       position="837.59712,1595.7086"
        id="guide4428"
        inkscape:locked="false" />
     <sodipodi:guide
-       position="52.510159,449.91234"
+       position="37.597115,445.70866"
        orientation="0,1"
        id="guide1209"
        inkscape:locked="false" />
     <sodipodi:guide
-       position="22.510159,59.912344"
+       position="7.5971153,55.708665"
        orientation="0,1"
        id="guide1211"
        inkscape:locked="false" />
@@ -436,7 +440,12 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title>foosboard 1.0</dc:title>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title></dc:title>
+          </cc:Agent>
+        </dc:creator>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -445,7 +454,7 @@
      inkscape:groupmode="layer"
      id="P2_3_zone"
      inkscape:label="P2_3_zone"
-     transform="translate(107.47184,-207.0528)">
+     transform="translate(92.558796,-206.89235)">
     <rect
        y="277.98257"
        x="277.96167"
@@ -459,7 +468,7 @@
      id="P1_3_zone"
      inkscape:groupmode="layer"
      style="display:inline"
-     transform="translate(107.47184,-207.0528)">
+     transform="translate(92.558796,-206.89235)">
     <rect
        style="opacity:1;vector-effect:none;fill:#ffff00;fill-opacity:1;stroke:#000000;stroke-width:0.37795275;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
        id="rect1241"
@@ -473,7 +482,7 @@
      id="P1_5_zone"
      inkscape:groupmode="layer"
      style="display:inline"
-     transform="translate(107.47184,-207.0528)">
+     transform="translate(92.558796,-206.89235)">
     <rect
        style="opacity:1;vector-effect:none;fill:#ffff00;fill-opacity:1;stroke:#000000;stroke-width:0.37795275;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
        id="rect1247"
@@ -487,7 +496,7 @@
      inkscape:groupmode="layer"
      id="P2_5_zone"
      inkscape:label="P2_5_zone"
-     transform="translate(107.47184,-207.0528)">
+     transform="translate(92.558796,-206.89235)">
     <rect
        y="277.98257"
        x="137.49365"
@@ -501,7 +510,7 @@
      inkscape:label="P1_1_zone"
      id="P1_1_zone"
      inkscape:groupmode="layer"
-     transform="translate(107.47184,-207.0528)">
+     transform="translate(92.558796,-206.89235)">
     <rect
        y="277.98257"
        x="348.19565"
@@ -511,7 +520,7 @@
        style="opacity:1;vector-effect:none;fill:#ffff00;fill-opacity:1;stroke:#000000;stroke-width:0.37795272;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
   </g>
   <g
-     transform="translate(107.47184,-207.0528)"
+     transform="translate(92.558796,-206.89235)"
      inkscape:groupmode="layer"
      id="P1_2_zone"
      inkscape:label="P1_2_zone"
@@ -529,7 +538,7 @@
      id="P2_2_zone"
      inkscape:label="P2_2_zone"
      style="display:inline"
-     transform="translate(107.47184,-207.0528)">
+     transform="translate(92.558796,-206.89235)">
     <rect
        style="opacity:1;vector-effect:none;fill:#ffff00;fill-opacity:1;stroke:#000000;stroke-width:0.37795275;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
        id="rect1235"
@@ -539,7 +548,7 @@
        y="277.98257" />
   </g>
   <g
-     transform="translate(107.47184,-207.0528)"
+     transform="translate(92.558796,-206.89235)"
      style="display:inline"
      inkscape:label="P2_1_zone"
      id="P2_1_zone"
@@ -557,7 +566,7 @@
      id="table_field"
      inkscape:label="table_field"
      style="display:inline"
-     transform="translate(32.510159,-50.414973)">
+     transform="translate(17.597115,-50.254529)">
     <rect
        style="fill:#37c837;fill-opacity:1;stroke:none;stroke-width:10.00277042;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect2882"
@@ -625,7 +634,7 @@
      id="guides"
      inkscape:label="guides"
      style="display:none"
-     transform="translate(32.510159,-50.414973)">
+     transform="translate(17.597115,-50.254529)">
     <g
        id="g1571"
        transform="translate(-87.252904,23.921344)">
@@ -664,12 +673,13 @@
   <g
      inkscape:groupmode="layer"
      id="shots"
-     inkscape:label="shots" />
+     inkscape:label="shots"
+     transform="translate(-14.913044,0.16044416)" />
   <g
      inkscape:groupmode="layer"
      id="ball"
      inkscape:label="ball"
-     transform="translate(107.47184,-207.0528)"
+     transform="translate(92.558796,-206.89235)"
      style="display:inline">
     <circle
        style="display:inline;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.29661018;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
@@ -683,7 +693,7 @@
      id="P2_3_rod"
      inkscape:label="P2_3_rod"
      style="display:inline"
-     transform="translate(107.47184,-207.0528)">
+     transform="translate(92.558796,-206.89235)">
     <path
        style="display:inline;fill:#a0a0a0;fill-opacity:1;stroke:#000000;stroke-width:1.07339358;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.58823529"
        d="m 312.52815,242.98254 h 5 v 390 h -5 z"
@@ -707,7 +717,7 @@
      inkscape:label="P1_1_rod"
      id="P1_1_rod"
      inkscape:groupmode="layer"
-     transform="translate(107.47184,-207.0528)">
+     transform="translate(92.558796,-206.89235)">
     <path
        inkscape:connector-curvature="0"
        id="path1209"
@@ -733,7 +743,7 @@
      id="P1_2_rod"
      inkscape:label="P1_2_rod"
      style="display:inline"
-     transform="translate(107.47184,-207.0528)">
+     transform="translate(92.558796,-206.89235)">
     <path
        style="display:inline;fill:#a0a0a0;fill-opacity:1;stroke:#000000;stroke-width:1.07339358;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.58823529"
        d="m 382.52816,242.98254 h 5 v 390 h -5 z"
@@ -759,7 +769,7 @@
      inkscape:label="P1_5_rod"
      id="P1_5_rod"
      inkscape:groupmode="layer"
-     transform="translate(107.47184,-207.0528)">
+     transform="translate(92.558796,-206.89235)">
     <path
        inkscape:connector-curvature="0"
        id="path1201"
@@ -785,7 +795,7 @@
      id="P2_5_rod"
      inkscape:label="P2_5_rod"
      style="display:inline"
-     transform="translate(107.47184,-207.0528)">
+     transform="translate(92.558796,-206.89235)">
     <rect
        y="242.98256"
        x="167.65314"
@@ -810,7 +820,7 @@
      id="P2_1_rod"
      inkscape:label="P2_1_rod"
      style="display:inline"
-     transform="translate(107.47184,-207.0528)">
+     transform="translate(92.558796,-206.89235)">
     <rect
        y="242.98256"
        x="-42.471844"
@@ -837,7 +847,7 @@
      inkscape:label="P2_2_rod"
      id="P2_2_rod"
      inkscape:groupmode="layer"
-     transform="translate(107.47184,-207.0528)">
+     transform="translate(92.558796,-206.89235)">
     <rect
        style="display:inline;fill:#a0a0a0;fill-opacity:1;stroke:#000000;stroke-width:1.01081109;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.58823529"
        id="rect1213"
@@ -864,7 +874,7 @@
      id="P1_3_rod"
      inkscape:label="P1_3_rod"
      style="display:inline"
-     transform="translate(107.47184,-207.0528)">
+     transform="translate(92.558796,-206.89235)">
     <rect
        y="242.98256"
        x="98.379219"
@@ -891,7 +901,7 @@
      id="table_frame"
      inkscape:label="table_frame"
      style="display:inline"
-     transform="translate(32.510159,-50.414973)">
+     transform="translate(17.597115,-50.254529)">
     <rect
        style="display:inline;fill:none;stroke:#000000;stroke-width:10.00000095;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect2882-6"
@@ -901,7 +911,7 @@
        y="116.34475" />
   </g>
   <g
-     transform="translate(32.510159,-50.414973)"
+     transform="translate(17.597115,-50.254529)"
      style="display:inline"
      inkscape:label="P2_goal"
      id="P2_goal"
@@ -919,7 +929,7 @@
      id="P1_goal"
      inkscape:label="P1_goal"
      style="display:inline"
-     transform="translate(32.510159,-50.414973)">
+     transform="translate(17.597115,-50.254529)">
     <rect
        style="display:inline;fill:#ffffff;fill-opacity:1;stroke:none"
        id="rect1208"
@@ -947,7 +957,7 @@
      id="P2_goal_3pos"
      inkscape:label="P2_goal_3pos"
      style="display:none"
-     transform="translate(32.510159,-50.414973)">
+     transform="translate(17.597115,-50.254529)">
     <rect
        style="display:inline;fill:#000080;fill-opacity:0.58823529;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="P2_goal_3pos_1"
@@ -974,7 +984,7 @@
        y="266.34479" />
   </g>
   <g
-     transform="translate(32.510159,-50.414973)"
+     transform="translate(17.597115,-50.254529)"
      style="display:none"
      inkscape:label="P2_goal_5pos"
      id="P2_goal_5pos"
@@ -1042,7 +1052,7 @@
        y="236.34476" />
   </g>
   <g
-     transform="translate(32.510159,-50.414973)"
+     transform="translate(17.597115,-50.254529)"
      style="display:none"
      inkscape:label="P1_goal_3pos"
      id="P1_goal_3pos"
@@ -1077,7 +1087,7 @@
      id="P1_goal_5pos"
      inkscape:label="P1_goal_5pos"
      style="display:none"
-     transform="translate(32.510159,-50.414973)">
+     transform="translate(17.597115,-50.254529)">
     <rect
        style="display:inline;fill:#ffffff;fill-opacity:1;stroke:none"
        id="rect1216"
@@ -1128,7 +1138,7 @@
      id="P2_1_front"
      inkscape:label="P2_1_front"
      style="display:none"
-     transform="translate(107.47184,-207.0528)">
+     transform="translate(92.558796,-206.89235)">
     <g
        id="g1667"
        transform="translate(0,4.6426842)">
@@ -1174,7 +1184,7 @@
     </g>
   </g>
   <g
-     transform="translate(107.47184,-207.0528)"
+     transform="translate(92.558796,-206.89235)"
      style="display:none"
      inkscape:label="P2_1_up"
      id="P2_1_up"
@@ -1228,7 +1238,7 @@
      id="P2_1_back"
      inkscape:label="P2_1_back"
      style="display:none"
-     transform="translate(32.510159,-50.414973)">
+     transform="translate(17.597115,-50.254529)">
     <g
        id="g1701"
        transform="translate(0,4.6426849)">
@@ -1278,7 +1288,7 @@
      id="P2_1_down"
      inkscape:label="P2_1_down"
      style="display:inline"
-     transform="translate(107.47184,-207.0528)">
+     transform="translate(92.558796,-206.89235)">
     <g
        id="g1641"
        transform="translate(24.574473,54.867828)">
@@ -1320,7 +1330,7 @@
      id="P2_2_down"
      inkscape:label="P2_2_down"
      style="display:inline"
-     transform="translate(107.47184,-207.0528)">
+     transform="translate(92.558796,-206.89235)">
     <g
        id="g3677"
        transform="translate(-82.92678,781.99835)">
@@ -1374,7 +1384,7 @@
      id="P2_2_front"
      inkscape:label="P2_2_front"
      style="display:none"
-     transform="translate(107.47184,-207.0528)">
+     transform="translate(92.558796,-206.89235)">
     <g
        id="g3827"
        transform="translate(-82.92678,-689.98941)">
@@ -1440,7 +1450,7 @@
     </g>
   </g>
   <g
-     transform="translate(107.47184,-207.0528)"
+     transform="translate(92.558796,-206.89235)"
      style="display:none"
      inkscape:label="P2_2_up"
      id="P2_2_up"
@@ -1510,7 +1520,7 @@
     </g>
   </g>
   <g
-     transform="translate(32.510159,-50.414973)"
+     transform="translate(17.597115,-50.254529)"
      style="display:none"
      inkscape:label="P2_2_back"
      id="P2_2_back"
@@ -1581,7 +1591,7 @@
      id="P2_5_down"
      inkscape:label="P2_5_down"
      style="display:none"
-     transform="translate(107.47184,-207.0528)">
+     transform="translate(92.558796,-206.89235)">
     <g
        id="g3724"
        transform="translate(-82.567558,788.62183)">
@@ -1673,7 +1683,7 @@
      inkscape:groupmode="layer"
      id="P2_5_back"
      inkscape:label="P2_5_back"
-     transform="translate(32.510159,-50.414973)"
+     transform="translate(17.597115,-50.254529)"
      style="display:none">
     <g
        id="g3499"
@@ -1804,7 +1814,7 @@
      id="P2_5_front"
      inkscape:label="P2_5_front"
      style="display:none"
-     transform="translate(107.47184,-207.0528)">
+     transform="translate(92.558796,-206.89235)">
     <g
        id="g3898"
        transform="translate(-82.459007,-693.01151)">
@@ -1933,7 +1943,7 @@
     </g>
   </g>
   <g
-     transform="translate(107.47184,-207.0528)"
+     transform="translate(92.558796,-206.89235)"
      style="display:inline"
      inkscape:label="P2_5_up"
      id="P2_5_up"
@@ -2068,7 +2078,7 @@
      id="P2_3_down"
      inkscape:label="P2_3_down"
      style="display:none"
-     transform="translate(107.47184,-207.0528)">
+     transform="translate(92.558796,-206.89235)">
     <g
        id="g3781"
        transform="translate(-82.530535,792.02748)">
@@ -2132,7 +2142,7 @@
      id="P2_3_front"
      inkscape:label="P2_3_front"
      style="display:none"
-     transform="translate(107.47184,-207.0528)">
+     transform="translate(92.558796,-206.89235)">
     <g
        id="g3984"
        transform="translate(-82.489824,-692.13913)">
@@ -2197,7 +2207,7 @@
     </g>
   </g>
   <g
-     transform="translate(107.47184,-207.0528)"
+     transform="translate(92.558796,-206.89235)"
      style="display:inline"
      inkscape:label="P2_3_up"
      id="P2_3_up"
@@ -2269,7 +2279,7 @@
      inkscape:groupmode="layer"
      id="P2_3_back"
      inkscape:label="P2_3_back"
-     transform="translate(32.510159,-50.414973)"
+     transform="translate(17.597115,-50.254529)"
      style="display:none;opacity:0.98999999">
     <g
        id="g1474"
@@ -2360,7 +2370,7 @@
      id="P1_1_down"
      inkscape:label="P1_1_down"
      style="display:inline"
-     transform="translate(107.47184,-207.0528)">
+     transform="translate(92.558796,-206.89235)">
     <g
        id="g1743"
        transform="translate(0,5.6130364)">
@@ -2398,7 +2408,7 @@
     </g>
   </g>
   <g
-     transform="translate(32.510159,-50.414973)"
+     transform="translate(17.597115,-50.254529)"
      style="display:none;opacity:1"
      inkscape:label="P1_1_front"
      id="P1_1_front"
@@ -2452,7 +2462,7 @@
      id="P1_1_up"
      inkscape:label="P1_1_up"
      style="display:none;opacity:1"
-     transform="translate(32.510159,-50.414973)">
+     transform="translate(17.597115,-50.254529)">
     <g
        transform="translate(0,5.6129957)"
        id="g1678">
@@ -2502,7 +2512,7 @@
      id="P1_1_back"
      inkscape:label="P1_1_back"
      style="display:none"
-     transform="translate(107.47184,-207.0528)">
+     transform="translate(92.558796,-206.89235)">
     <g
        id="g1785"
        transform="translate(0,5.6130364)">
@@ -2552,7 +2562,7 @@
      id="P1_2_down"
      inkscape:label="P1_2_down"
      style="display:inline"
-     transform="translate(107.47184,-207.0528)">
+     transform="translate(92.558796,-206.89235)">
     <g
        id="g3804"
        transform="translate(-82.519676,751.99976)">
@@ -2606,7 +2616,7 @@
      id="P1_2_front"
      inkscape:label="P1_2_front"
      style="display:none"
-     transform="translate(107.47184,-207.0528)">
+     transform="translate(92.558796,-206.89235)">
     <g
        id="g4000"
        transform="translate(-82.519676,-724.01651)">
@@ -2672,7 +2682,7 @@
     </g>
   </g>
   <g
-     transform="translate(107.47184,-207.0528)"
+     transform="translate(92.558796,-206.89235)"
      style="display:none"
      inkscape:label="P1_2_up"
      id="P1_2_up"
@@ -2746,7 +2756,7 @@
      id="P1_2_back"
      inkscape:label="P1_2_back"
      style="display:none"
-     transform="translate(32.510159,-50.414973)">
+     transform="translate(17.597115,-50.254529)">
     <g
        id="g3644"
        transform="translate(-82.519691,113.97992)">
@@ -2813,7 +2823,7 @@
      id="P1_5_down"
      inkscape:label="P1_5_down"
      style="display:inline"
-     transform="translate(107.47184,-207.0528)">
+     transform="translate(92.558796,-206.89235)">
     <g
        id="g3750"
        transform="translate(-82.508863,788.97809)">
@@ -2906,7 +2916,7 @@
      id="P1_5_front"
      inkscape:label="P1_5_front"
      style="display:none"
-     transform="translate(107.47184,-207.0528)">
+     transform="translate(92.558796,-206.89235)">
     <g
        id="g3934"
        transform="translate(-80.488935,-693.02194)">
@@ -3035,7 +3045,7 @@
     </g>
   </g>
   <g
-     transform="translate(107.47184,-207.0528)"
+     transform="translate(92.558796,-206.89235)"
      style="display:none"
      inkscape:label="P1_5_up"
      id="P1_5_up"
@@ -3169,7 +3179,7 @@
      inkscape:groupmode="layer"
      id="P1_5_back"
      inkscape:label="P1_5_back"
-     transform="translate(32.510159,-50.414973)"
+     transform="translate(17.597115,-50.254529)"
      style="display:none">
     <g
        id="g3447"
@@ -3300,7 +3310,7 @@
      id="P1_3_down"
      inkscape:label="P1_3_down"
      style="display:inline"
-     transform="translate(107.47184,-207.0528)">
+     transform="translate(92.558796,-206.89235)">
     <g
        id="g3700"
        transform="translate(-82.09457,789.96515)">
@@ -3367,7 +3377,7 @@
      id="P1_3_front"
      inkscape:label="P1_3_front"
      style="display:none"
-     transform="translate(107.47184,-207.0528)">
+     transform="translate(92.558796,-206.89235)">
     <g
        id="g3868"
        transform="translate(-82.070339,-700.02194)">
@@ -3454,7 +3464,7 @@
     </g>
   </g>
   <g
-     transform="translate(107.47184,-207.0528)"
+     transform="translate(92.558796,-206.89235)"
      style="display:none"
      inkscape:label="P1_3_up"
      id="P1_3_up"
@@ -3548,7 +3558,7 @@
      inkscape:groupmode="layer"
      id="P1_3_back"
      inkscape:label="P1_3_back"
-     transform="translate(32.510159,-50.414973)"
+     transform="translate(17.597115,-50.254529)"
      style="display:none">
     <g
        id="g3545"
@@ -3636,7 +3646,8 @@
      inkscape:groupmode="layer"
      id="lineend"
      inkscape:label="lineend"
-     style="display:none">
+     style="display:none"
+     transform="translate(-14.913044,0.16044416)">
     <g
        id="g1723"
        transform="translate(303.33587,21.443248)"
@@ -3671,7 +3682,8 @@
      style="display:none"
      inkscape:label="linestart"
      id="linestart"
-     inkscape:groupmode="layer">
+     inkscape:groupmode="layer"
+     transform="translate(-14.913044,0.16044416)">
     <g
        style="fill:#ffffff;fill-opacity:0.45016097"
        transform="matrix(0.96136875,0,0,0.96021575,-144.21092,-6.620393)"
@@ -3688,7 +3700,8 @@
      inkscape:groupmode="layer"
      id="linebank"
      inkscape:label="linebank"
-     style="display:none">
+     style="display:none"
+     transform="translate(-14.913044,0.16044416)">
     <rect
        style="opacity:1;vector-effect:none;fill:#ffff00;fill-opacity:0.45098039;stroke:#ffff00;stroke-width:1.08908165;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
        id="rect1547"
