@@ -13,10 +13,9 @@
    height="461.85956"
    id="svg2"
    version="1.1"
-   inkscape:version="0.92.3 (2405546, 2018-03-11)"
+   inkscape:version="0.92.2 (5c3e80d, 2017-08-06)"
    sodipodi:docname="foosball_table.svg"
-   title="Foosalytics v1.0"
-   >
+   title="Foosalytics v1.0">
   <defs
      id="defs4">
     <marker
@@ -380,12 +379,12 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.5972394"
-     inkscape:cx="209.873"
-     inkscape:cy="178.05353"
+     inkscape:cx="315.90285"
+     inkscape:cy="240.98283"
      inkscape:document-units="px"
      showgrid="true"
-     inkscape:window-width="2560"
-     inkscape:window-height="1377"
+     inkscape:window-width="1600"
+     inkscape:window-height="838"
      inkscape:window-x="-8"
      inkscape:window-y="-8"
      inkscape:window-maximized="1"
@@ -401,7 +400,7 @@
      inkscape:snap-bbox="true"
      inkscape:snap-global="true"
      inkscape:snap-grids="false"
-     inkscape:current-layer="P1_goal_3pos">
+     inkscape:current-layer="g3750">
     <inkscape:grid
        type="xygrid"
        id="grid2816"
@@ -560,7 +559,7 @@
      style="display:inline"
      transform="translate(32.510159,-50.414973)">
     <rect
-       style="fill:#00c846;fill-opacity:1;stroke:none;stroke-width:10.00277042;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       style="fill:#37c837;fill-opacity:1;stroke:none;stroke-width:10.00277042;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect2882"
        width="560.31049"
        height="320"
