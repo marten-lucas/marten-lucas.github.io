@@ -295,11 +295,40 @@ function shotline_select(trigger_shot) {
 	
 	var stroke_color = trigger_shot.attr("stroke");
 	colorpicker_setColor(stroke_color);
+	linecontrol_color_set(stroke_color);
 
 	svg_shotline_selected = trigger_shot
 	
 	$( '[id^=btn_edit_shot]' ).show();
 
+};
+
+function linecontrol_color_set(new_color) {
+	//@@TODO: Does not work
+	var new_color_hex = colorToHex(new_color);
+	var new_color_alpha = new_color_hex + "70"
+	
+	$('[id^=line]').each(function(i, line_control) {
+		svg_line_control = s.select("#" + line_control.id);
+		svg_line_control.attr({fill: new_color_alpha });
+		
+	});
+	
+	
+};
+
+function colorToHex(color) {
+    if (color.substr(0, 1) === '#') {
+        return color;
+    }
+    var digits = /(.*?)rgb\((\d+), (\d+), (\d+)\)/.exec(color);
+    
+    var red = parseInt(digits[2]);
+    var green = parseInt(digits[3]);
+    var blue = parseInt(digits[4]);
+    
+    var rgb = blue | (green << 8) | (red << 16);
+    return digits[1] + '#' + rgb.toString(16);
 };
 
 function addshot_btn_visible_set(shotline_id) {
@@ -457,10 +486,6 @@ function shot_defaultadd(shot_type) {
 
 	var selected_swatch = $('#colorselector option:selected');
 	var stroke_color = selected_swatch.attr("data-color");
-	
-	if (!stroke_color) {
-		stroke_color = "yellow";
-	};
 	
 	svg_shotline.attr({strokeWidth:ball_diameter,stroke: stroke_color, fill: "none" ,strokeLinecap:"butt"});
 	
@@ -807,5 +832,6 @@ function shotcolor_set(new_color) {
 	console.log("shotcolor change: " + new_color);
 	if (svg_shotline_selected) {
 		svg_shotline_selected.attr({stroke: new_color});
+		linecontrol_color_set(new_color);
 	};
 };
