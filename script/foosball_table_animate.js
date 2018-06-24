@@ -40,6 +40,8 @@ s = Snap("#foosball_table");
 		
 		s.select('#ball').drag (ball_move, ball_start, ball_stop )
 		
+		init_colorselector();
+		
 		init_shotdesigner();
 		
 		init_save_load();

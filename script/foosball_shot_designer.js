@@ -293,8 +293,10 @@ function shotline_select(trigger_shot) {
 		linebank_position_set(trigger_shot)
 	};
 	
+	var stroke_color = trigger_shot.attr("stroke");
+	colorpicker_setColor(stroke_color);
+
 	svg_shotline_selected = trigger_shot
-	
 	
 	$( '[id^=btn_edit_shot]' ).show();
 
@@ -452,7 +454,15 @@ function shot_defaultadd(shot_type) {
 		var svg_shotline = svg_shotlayer.polyline(bb_ball.cx, bb_ball.cy, reflection_x, reflection_y, target_x, target_y);
 	};
 	
-	svg_shotline.attr({strokeWidth:ball_diameter,stroke:"yellow", fill: "none" ,strokeLinecap:"butt"});
+	//@@TODO: selected_swatch is not found
+	var selected_swatch = $('#colorselector option:selected');
+	var stroke_color = selected_swatch.attr("data-color");
+	
+	if (!stroke_color) {
+		stroke_color = "yellow";
+	};
+	
+	svg_shotline.attr({strokeWidth:ball_diameter,stroke: stroke_color, fill: "none" ,strokeLinecap:"butt"});
 	
 	var unique_id = "user_shot_" + svg_shotline.id + "_" + shot_type;
 	
@@ -790,4 +800,12 @@ var linestart_start = function( x, y, ev) {
 var linestart_stop = function() {
 		console.log("linestart moved")
 	
+};
+
+
+function shotcolor_set(new_color) {
+	console.log("shotcolor change: " + new_color);
+	if (svg_shotline_selected) {
+		svg_shotline_selected.attr({stroke: new_color});
+	};
 };
