@@ -14,6 +14,9 @@ s = Snap("#foosball_table");
 	Snap.load("foosball_table.svg", function(f) {
 		s.append(f);
 		
+		$( '#checkbox_toggle_guides' ).change( function() {
+			toggle_guides();
+		});
 		
 		$( '[id*=_move_] , [id*=_movebox_]' ).on( "mousedown touchstart", function( e ) {
 			rod_move_starthold(this);

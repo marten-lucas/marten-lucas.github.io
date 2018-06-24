@@ -18,8 +18,6 @@ function init_shotdesigner () {
 			goal_position_toggle();
 		});
 	
-	$( '#check_5goalpos' ).bootstrapToggle('off')
-	
 	$( '[id^=btntoggle_goalpos]' ).click( function() {
 			goal_position_toggle(this);
 		});

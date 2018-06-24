@@ -61,17 +61,20 @@
 				<div class="container-fluid" >
 					<svg id="foosball_table" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="foosball_table" ></svg>
 										
+					
+					
+					
 					<div class="form-check">
-						<input class="form-check-input" type="checkbox" value="" id="checkbox_toggle_guides" onclick="toggle_guides()">
 						<label class="form-check-label" for="checkbox_toggle_guides">
 						Hilfslinien
 						</label>
+						<input data-toggle="toggle" type="checkbox" id="checkbox_toggle_guides" value="off">
 					</div>
 				</div>
                 <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Toggle Menu</a>
 				
 
-				<input data-toggle="toggle" data-on="5 Positions" data-off="3 Positions" type="checkbox" id="check_5goalpos" checked="">
+				<input data-toggle="toggle" data-on="5 Positions" data-off="3 Positions" type="checkbox" id="check_5goalpos" value="off">
 				
 				<a class="btn btn-primary" id="btn_addshot_direct">direct shot</a>
 				<a class="btn btn-primary" id="btn_addshot_bank_near">near bank shot</a>
