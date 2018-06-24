@@ -146,4 +146,7 @@ function init_colorselector() {
 
 function colorpicker_setColor(new_color) {
 	console.log("new color:" + new_color);
+	
+	// @@TODO: select swatch
+	// $('#colorselector').setColor(new_color);
 }

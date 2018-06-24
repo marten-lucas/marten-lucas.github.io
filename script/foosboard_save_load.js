@@ -24,10 +24,8 @@ function exportBoard_btn_click() {
 };
 
 function saveBoard_btn_click() {
-	rods_hide()
 	var foosball_table = Snap('#foosball_table');
 	download_SVG(foosball_table.toString(), 'foosboard.svg');
-	rods_show()
 };
 
 

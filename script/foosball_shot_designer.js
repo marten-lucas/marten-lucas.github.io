@@ -454,7 +454,7 @@ function shot_defaultadd(shot_type) {
 		var svg_shotline = svg_shotlayer.polyline(bb_ball.cx, bb_ball.cy, reflection_x, reflection_y, target_x, target_y);
 	};
 	
-	//@@TODO: selected_swatch is not found
+
 	var selected_swatch = $('#colorselector option:selected');
 	var stroke_color = selected_swatch.attr("data-color");
 	
