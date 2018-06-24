@@ -27,24 +27,18 @@
                         Foosboard
                     </a>
                 </li>
-                <li>
-                    <a href="#">Ansicht</a>
-                </li>
-                <li>
-                    <a href="#">Bild speichern</a>
-                </li>
-                <li>
-                    <a href="#">Bild teilen</a>
-                </li>
-				<li>
-                    <a href="#">Bild laden</a>
-                </li>
-				<li>
-                    <a href="#">Zurücksetzen</a>
-                </li>
-                <li>
-                    <a href="#">Services</a>
-                </li>
+				<input data-toggle="toggle" data-on="5 Positions" data-off="3 Positions" type="checkbox" id="check_5goalpos" value="off">
+                <div id="btn_save_load_shot" class="container-fluid">
+					<a class="btn btn-primary" id="btn_save_board">save board</a>
+					<a class="btn btn-primary" id="btn_export_board">export board</a>
+					<a class="btn btn-primary" id="btn_reset_board">reset board</a>
+				</div>
+				<div class="form-check">
+						<label class="form-check-label" for="checkbox_toggle_guides">
+						Hilfslinien
+						</label>
+						<input data-toggle="toggle" type="checkbox" id="checkbox_toggle_guides" value="off">
+					</div>
                 <li>
                     <a href="#">Impressum & Datenschutz</a>
                 </li>
@@ -61,20 +55,10 @@
 				<div class="container-fluid" >
 					<svg id="foosball_table" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="foosball_table" ></svg>
 										
-					
-					
-					
-					<div class="form-check">
-						<label class="form-check-label" for="checkbox_toggle_guides">
-						Hilfslinien
-						</label>
-						<input data-toggle="toggle" type="checkbox" id="checkbox_toggle_guides" value="off">
-					</div>
 				</div>
                 <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Toggle Menu</a>
 				
 
-				<input data-toggle="toggle" data-on="5 Positions" data-off="3 Positions" type="checkbox" id="check_5goalpos" value="off">
 				
 				<a class="btn btn-primary" id="btn_addshot_direct">direct shot</a>
 				<a class="btn btn-primary" id="btn_addshot_bank_near">near bank shot</a>
@@ -93,11 +77,7 @@
 				</select>
 				</div>
 				
-				<div id="btn_save_load_shot" class="container-fluid">
-					<a class="btn btn-primary" id="btn_save_board">save board</a>
-					<a class="btn btn-primary" id="btn_export_board">export board</a>
-					<a class="btn btn-primary" id="btn_reset_board">reset board</a>
-				</div>
+				
 				
 				<canvas id="export_canvas" width=600 height=350 display="none">
 				
