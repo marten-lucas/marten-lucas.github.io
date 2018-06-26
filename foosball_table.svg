@@ -3719,40 +3719,47 @@
     <board_position
        id="savedposition_12312313"
        name="gerades System"
-       visible="false"><rod_position
+       visible="false">
+<rod_position
+   player_id="1"
    rod="P1_1"
    tilt="front"
    tilt_bak="down">132</rod_position>
 <rod_position
+   player_id="1"
    rod="P1_2"
    tilt="front"
    tilt_bak="down">132</rod_position>
 <rod_position
+   player_id="1"
    rod="P1_5"
    tilt="front"
    tilt_bak="down">132</rod_position>
 <rod_position
+   player_id="1"
    rod="P1_3"
    tilt="front"
    tilt_bak="down">132</rod_position>
 <rod_position
+   player_id="2"
    rod="P2_1"
    tilt="front"
    tilt_bak="down">132</rod_position>
 <rod_position
+   player_id="2"
    rod="P2_2"
    tilt="front"
    tilt_bak="down">132</rod_position>
 <rod_position
+   player_id="2"
    rod="P2_5"
    tilt="front"
    tilt_bak="down">132</rod_position>
 <rod_position
+   player_id="2"
    rod="P2_3"
    tilt="front"
    tilt_bak="down">132</rod_position>
-<board_position />
-s&gt;
 </board_position>
   </board_positions>
 </svg>

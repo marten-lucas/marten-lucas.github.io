@@ -13,6 +13,8 @@ function init_save_load () {
 	$( '#btn_reset_board' ).click( function() {
 			resetBoard_btn_click();
 		});
+	
+	saved_position_init();
 };
 
 function resetBoard_btn_click () {
@@ -109,4 +111,34 @@ function drawInlineSVG(ctx, rawSVG, callback) {
     
     img.src = url;
 ;}
+
+function saved_position_init() {
+	
+	if (!$( "board_position" ).length) {
+		$('#saved_positions_table').hide();
+	};
+	
+	$( "board_position" ).each(function(i, this_pos) {
+		var this_selector = "#tr_" + this_pos.id
+		
+		var this_tr = $(this_selector);
+		//@@TODO: does not work! although item with id exists it is still cloned (can be tested with delete button)
+		if (this_tr.length == 0) {
+			saved_positions_table_addrow(this_pos.id);
+		};
+		
+	});	
+	
+
+};
+
+function saved_positions_table_addrow(new_id) {
+	var clonedRow = $('tbody tr:first').clone();
+
+	clonedRow.attr('id', "#tr_" + new_id)
+	$('#saved_positions_table').find($('tbody')).append(clonedRow);
+	clonedRow.show();
+};
+	
+
 

@@ -77,9 +77,31 @@
 				</select>
 				</div>
 				
-				
+				<div id='saved_positions_table'>
+					<table class="table table-striped">
+					  <thead>
+						<tr>
+						  <th scope="col">#</th>
+						  <th scope="col">Name</th>
+						  <th scope="col"></th>
+						  
+						</tr>
+					  </thead>
+					  <tbody>
+						<tr style="display:none;">
+						  <th scope="row">1</th>
+							<td>gerades System</td>
+							<td><button type="button" class="btn btn-secondary">Set P1</button>
+							<td><button type="button" class="btn btn-secondary">Set P2</button>
+							<td><button type="button" class="btn btn-secondary">Mirror</button>
+							<td><button type="button" class="btn btn-secondary" onclick='saved_position_init()'>Delete</button>
+						</tr>
+					  </tbody>
+					</table>
+				</div>
 				
 				<canvas id="export_canvas" width=600 height=350 display="none">
+				
 				
         </div>
         <!-- /#page-content-wrapper -->
