@@ -83,7 +83,7 @@
 						<tr>
 						  <th scope="col">#</th>
 						  <th scope="col">Name</th>
-						  <th scope="col"></th>
+						  <th scope="col"><a class="btn btn-primary" id="btn_save_pos">save positions</a></th>
 						  
 						</tr>
 					  </thead>
@@ -91,10 +91,12 @@
 						<tr style="display:none;">
 						  <th scope="row">1</th>
 							<td>gerades System</td>
-							<td><button type="button" class="btn btn-secondary">Set P1</button>
-							<td><button type="button" class="btn btn-secondary">Set P2</button>
-							<td><button type="button" class="btn btn-secondary">Mirror</button>
-							<td><button type="button" class="btn btn-secondary" onclick='saved_position_init()'>Delete</button>
+							<td><div class="btn-group" role="group" aria-label="Basic example">
+							<button type="button" class="btn btn-secondary">Set P1</button>
+							<button type="button" class="btn btn-secondary">Set P2</button>
+							<button type="button" class="btn btn-secondary">Mirror</button>
+							<button type="button" class="btn btn-secondary" onclick='saved_position_init()'>Delete</button>
+							</div></td>
 						</tr>
 					  </tbody>
 					</table>
