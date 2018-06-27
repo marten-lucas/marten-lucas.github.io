@@ -122,12 +122,24 @@ function saved_position_init() {
 		var this_selector = "#tr_" + this_pos.id
 		
 		var this_tr = $(this_selector);
-		//@@TODO: does not work! although item with id exists it is still cloned (can be tested with delete button)
+		//@@TODO: does not work! although item with id exists it is still cloned (can be tested with test init button)
 		if (this_tr.length == 0) {
 			saved_positions_table_addrow(this_pos.id);
 		};
 		
+	});
+
+	$('.btn_savedpos_set').click( function() {
+		btn_row_set_click(this);
 	});	
+	
+	$('.btn_savedpos_mirror').click( function() {
+		btn_row_set_mirror(this);
+	});
+	
+	$('.btn_savedpos_delete').click( function() {
+		btn_row_set_delete(this);
+	});
 	
 
 };
@@ -136,9 +148,42 @@ function saved_positions_table_addrow(new_id) {
 	var clonedRow = $('tbody tr:first').clone();
 
 	clonedRow.attr('id', "#tr_" + new_id)
+	clonedRow.data('savedpos', new_id)
 	$('#saved_positions_table').find($('tbody')).append(clonedRow);
+	var btn_in_row = clonedRow.find($("button"));
+	
+	//@@TODO: update naming
+	
 	clonedRow.show();
+};
+
+function btn_row_set_click(btn) {
+	var savedpos_tr = btn.closest( "tr" );
+	var savedpos_id = savedpos_tr.id.replace('tr_', '');
+	
+	if ($(savedpos_id).hasClass( "btn_savedpos_setP1" )) {
+		var player_id = "P1";
+	} else {
+		var player_id = "P2";
+	};
+	
+	$(savedpos_id).children().each(function(i, this_posdata) {
+		//TODO: stoped here
+		console.log(this_posdata.value)
+		
+	});
+	
+	console.log("set: " + savedpos_data.id);
+};
+
+function btn_row_set_mirror(btn) {
+	console.log("mirror: " + btn.innerText);
+};
+
+function btn_row_set_delete(btn) {
+	console.log("delete: " + btn.innerText);
 };
 	
 
+	
 
