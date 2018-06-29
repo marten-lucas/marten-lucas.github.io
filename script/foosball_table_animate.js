@@ -566,6 +566,13 @@ function rod_position_set(rod_id, new_pos, new_tilt, new_tilt_bak, mirror) {
 	
 	var rod_selector = rod_selector_string(rod_id);
 	
+	//@@TODO: to be confirmed
+	if (mirror) {
+		var svg_table = s.select("#table_field");
+		var bb_table = svg_table.getBBox();
+		new_pos = new_pos - bb_table.height/2;
+	};
+	
 	// move visible tilt and set visibility of arrow clicked
 	$(rod_selector).each(function(i, rod) {
 		// check if rod is "active" 
@@ -575,7 +582,7 @@ function rod_position_set(rod_id, new_pos, new_tilt, new_tilt_bak, mirror) {
 			var matrix = rod_svg.transform().localMatrix
 			
 			matrix.f = new_pos;
-			
+			//@@TODO: position is not correct
 			rod_svg.transform(matrix);
 		}
 		
@@ -594,5 +601,8 @@ function rod_position_set(rod_id, new_pos, new_tilt, new_tilt_bak, mirror) {
 			rod_svg.transform(matrix);
 		}
 		
-	});	
+	});
+
+		rod_tilt_set( rod_id , new_tilt_bak );
+		rod_tilt_set( rod_id , new_tilt );
 }

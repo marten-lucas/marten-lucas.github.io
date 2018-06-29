@@ -3717,45 +3717,45 @@
   </g>
   <board_positions>
     <board_position
-       id="savedposition_12312313"
+       id="saved_pos_12312313"
        name="gerades System">
 <rod_position
-   id="savedposition_12312313_P1_1"
+   id="saved_pos_12312313_P1_1"
    tilt="front"
    rod="P1_1"
    tilt_bak="down">132</rod_position>
 <rod_position
-   id="savedposition_12312313_P1_2"
+   id="saved_pos_12312313_P1_2"
    tilt="front"
    rod="P1_2"
    tilt_bak="down">132</rod_position>
 <rod_position
-   id="savedposition_12312313_P1_5"
+   id="saved_pos_12312313_P1_5"
    tilt="front"
    rod="P1_5"
    tilt_bak="down">132</rod_position>
 <rod_position
-   id="savedposition_12312313_P1_3"
+   id="saved_pos_12312313_P1_3"
    tilt="front"
    rod="P1_3"
    tilt_bak="down">132</rod_position>
 <rod_position
-   id="savedposition_12312313_P2_1"
+   id="saved_pos_12312313_P2_1"
    tilt="front"
    rod="P2_1"
    tilt_bak="down">132</rod_position>
 <rod_position
-   id="savedposition_12312313_P2_2"
+   id="saved_pos_12312313_P2_2"
    tilt="front"
    rod="P2_2"
    tilt_bak="down">132</rod_position>
 <rod_position
-   id="savedposition_12312313_P2_5"
+   id="saved_pos_12312313_P2_5"
    tilt="front"
    rod="P2_5"
    tilt_bak="down">132</rod_position>
 <rod_position
-   id="savedposition_12312313_P2_3"
+   id="saved_pos_12312313_P2_3"
    tilt="front"
    rod="P2_3"
    tilt_bak="down">132</rod_position>

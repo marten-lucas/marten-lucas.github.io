@@ -1,4 +1,5 @@
 var s
+var mirror_positions = new Array;
 
 function init_save_load () {
 	s = Snap("#foosball_table");
@@ -124,11 +125,15 @@ function saved_position_init() {
 		var this_tr = $(this_selector);
 		//@@TODO: does not work! although item with id exists it is still cloned (can be tested with test init button)
 		if (this_tr.length == 0) {
-			saved_positions_table_addrow(this_pos.id);
+			saved_positions_table_addrow(this_pos.id, this_pos.name);
 		};
 		
 	});
 
+	$('#btn_save_pos').click( function() {
+		btn_pos_save_click(this);
+	});	
+	
 	$('.btn_savedpos_set').click( function() {
 		btn_row_set_click(this);
 	});	
@@ -144,15 +149,53 @@ function saved_position_init() {
 
 };
 
-function saved_positions_table_addrow(new_id) {
+function btn_pos_save_click () {
+	
+	var pos_name = "autosave";
+	position_save (pos_name);
+	
+	saved_position_init();
+	
+};
+
+function position_save(pos_name){
+	var d = new Date();
+	var pos_id = "saved_pos_" + d.getTime();
+	
+	var new_boardpos = document.createElement('board_position');
+	new_boardpos.name = pos_name;
+	new_boardpos.id = pos_id;
+	$('board_positions').append(new_boardpos);
+	
+	var player_id = ['P1','P2'];
+	var rod_id = ['1','2','5','3'];
+
+		
+	for (var k = 0; k < player_id.length; k++) {
+		for (var i = 0; i < rod_id.length; i++) {
+			var this_rodpos = document.createElement('rod_position');
+			var this_rod_id = player_id[k] + '_' + rod_id[i]
+			this_rodpos.id = pos_id + "_" + this_rod_id;
+			this_rodpos.setAttribute('rod', this_rod_id);
+			this_rodpos.setAttribute('tilt', tilt_positions_get(this_rod_id));
+			this_rodpos.setAttribute('tilt_bak', tilt_positions_get(this_rod_id, true));
+			this_rodpos.innerHTML = rod_position_get(this_rod_id);
+			
+			new_boardpos.append(this_rodpos);
+		};
+	};
+	
+	
+};
+
+function saved_positions_table_addrow(new_id, new_name) {
 	var clonedRow = $('tbody tr:first').clone();
 
 	clonedRow.attr('id', "#tr_" + new_id)
 	clonedRow.data('savedpos', new_id)
+	clonedRow.find('td:first').text(new_name);
 	$('#saved_positions_table').find($('tbody')).append(clonedRow);
-	var btn_in_row = clonedRow.find($("button"));
 	
-	//@@TODO: update naming
 	
 	clonedRow.show();
 };
@@ -173,7 +216,11 @@ function btn_row_set_click(btn) {
 		var roddata_val = parseFloat(this_roddata.innerHTML);
 		var roddata_tilt = this_roddata.getAttribute('tilt');
 		var roddata_tilt_bak = this_roddata.getAttribute('tilt_bak');
-		var mirror_position = false
+		if ($.inArray(savedpos_id, mirror_positions)==0) {
+			var mirror_position = false
+		} else  {
+			var mirror_position = true
+		};
 		var rod_id = this_roddata.getAttribute('rod');;
 		
 		if ($.isFunction(rod_position_set)) {
@@ -183,10 +230,25 @@ function btn_row_set_click(btn) {
 };
 
 function btn_row_set_mirror(btn) {
-	console.log("mirror: " + btn.innerText);
+	var savedpos_tr = btn.closest( "tr" );
+	var savedpos_id = savedpos_tr.id.replace('#tr_', ''); 
+	
+	if ($.inArray(savedpos_id, mirror_positions)==0) {
+		mirror_positions.splice($.inArray(savedpos_id, mirror_positions),1);
+		console.log("not mirroring: " + savedpos_id);
+	} else {
+		mirror_positions.push(savedpos_id);
+		console.log("now mirroring: " + savedpos_id);
+	};
 };
 
 function btn_row_set_delete(btn) {
+	var savedpos_tr = btn.closest( "tr" );
+	var savedpos_id = savedpos_tr.id.replace('#tr_', '');
+	
+	$( "#" + savedpos_id).remove();
+	btn.closest( "tr" ).remove();
+	
 	console.log("delete: " + btn.innerText);
 };
 	
