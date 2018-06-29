@@ -159,21 +159,27 @@ function saved_positions_table_addrow(new_id) {
 
 function btn_row_set_click(btn) {
 	var savedpos_tr = btn.closest( "tr" );
-	var savedpos_id = savedpos_tr.id.replace('tr_', '');
+	var savedpos_id = savedpos_tr.id.replace('#tr_', '');
 	
-	if ($(savedpos_id).hasClass( "btn_savedpos_setP1" )) {
+	if (btn.classList.contains( "btn_savedpos_setP1" )) {
 		var player_id = "P1";
 	} else {
 		var player_id = "P2";
 	};
 	
-	$(savedpos_id).children().each(function(i, this_posdata) {
-		//TODO: stoped here
-		console.log(this_posdata.value)
-		
-	});
+	var roddata_id = savedpos_id+"_" + player_id + "_";
 	
-	console.log("set: " + savedpos_data.id);
+	$( '[id^=' + roddata_id +']' ).each(function(i, this_roddata) {
+		var roddata_val = parseFloat(this_roddata.innerHTML);
+		var roddata_tilt = this_roddata.getAttribute('tilt');
+		var roddata_tilt_bak = this_roddata.getAttribute('tilt_bak');
+		var mirror_position = false
+		var rod_id = this_roddata.getAttribute('rod');;
+		
+		if ($.isFunction(rod_position_set)) {
+			rod_position_set(rod_id, roddata_val, roddata_tilt, roddata_tilt_bak, mirror_position);
+		};
+	});
 };
 
 function btn_row_set_mirror(btn) {

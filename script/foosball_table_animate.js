@@ -348,7 +348,8 @@ function is_P2 (rod_id) {
 	return re_P2.test(rod_id);
 };
 
-function rod_move(rod_arrow) {
+function rod_move(rod_arrow, step_size) {
+	step_size = step_size || 3.75/2;;
 	
 	// indicate action by changing fill to red - does not work
 	var svg_arrow = s.select("#" + rod_arrow.id);
@@ -360,7 +361,7 @@ function rod_move(rod_arrow) {
 	
 	var rod_id = rod_id_get(rod_arrow); 
 		
-	var step_size = 3.75/2;
+	
 	//get Player and rod from clicked arrow
 	var rod_selector = rod_selector_string(rod_id);
 	// get svg of clicked arrow
@@ -546,3 +547,52 @@ function rod_tilt_toggle(rod_visible) {
 	
 	
 };
+
+function rod_position_get (rod_id) {
+	var tilt_visible = tilt_positions_get(rod_id);
+	
+	var svg_rod = s.select("#" + rod_id + "_" + tilt_visible);
+	var bb_rod = svg_rod.getBBox();
+	var rod_position =  bb_rod.y
+	
+	return rod_position
+	
+};
+
+function rod_position_set(rod_id, new_pos, new_tilt, new_tilt_bak, mirror) {
+
+	
+	console.log("rod_pos: " + rod_id + " to " + new_pos + '(' + new_tilt + ';' + new_tilt_bak + ')' );
+	
+	var rod_selector = rod_selector_string(rod_id);
+	
+	// move visible tilt and set visibility of arrow clicked
+	$(rod_selector).each(function(i, rod) {
+		// check if rod is "active" 
+		if (s.select("#"+rod.id).attr("display")=="inline"){
+			// move rod
+			var rod_svg = s.select("#"+rod.id);
+			var matrix = rod_svg.transform().localMatrix
+			
+			matrix.f = new_pos;
+			
+			rod_svg.transform(matrix);
+		}
+		
+	});	
+	
+	// move invisible tilts
+	$(rod_selector).each(function(i, rod) {
+		// check if rod is "active" 
+		if (s.select("#"+rod.id).attr("display")=="none"){
+			// move rod
+			var rod_svg = s.select("#"+rod.id);
+			var matrix = rod_svg.transform().localMatrix
+			
+			matrix.f = new_pos;
+			
+			rod_svg.transform(matrix);
+		}
+		
+	});	
+}
