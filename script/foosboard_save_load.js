@@ -151,7 +151,7 @@ function saved_position_init() {
 
 function btn_pos_save_click () {
 	
-	var pos_name = "autosave";
+	var pos_name = $('#inputSavePosName').val();
 	position_save (pos_name);
 	
 	saved_position_init();
