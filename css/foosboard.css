@@ -1,7 +1,6 @@
 .foosball_table { 
-	/* @@TODO: Image does not scale correctly (should be max width & height to ratio */
-    width: 100%;
-	height: auto;
+    width: 100vw;
+	height: 75vh;
 	max-height: 100%
 }
 
@@ -100,4 +99,17 @@
   left: 10px;
   position: absolute;
   top: -6px;
+}
+
+
+.modal-body .form-horizontal .col-sm-2,
+.modal-body .form-horizontal .col-sm-10 {
+    width: 100%
+}
+
+.modal-body .form-horizontal .control-label {
+    text-align: left;
+}
+.modal-body .form-horizontal .col-sm-offset-2 {
+    margin-left: 15px;
 }
