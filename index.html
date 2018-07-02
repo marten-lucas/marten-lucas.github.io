@@ -17,148 +17,157 @@
   </head>
   
   <body>
-	 <div id="wrapper">
-
-        <!-- Sidebar -->
-        <div id="sidebar-wrapper">
-            <div class="sidebar-nav">
-                <li class="sidebar-brand">
-                    <a href="#">
-                        Foosboard
-                    </a>
-                </li>
-				<input data-toggle="toggle" data-on="5 Positions" data-off="3 Positions" type="checkbox" id="check_5goalpos" value="off">
-                <div id="btn_save_load_shot" class="container-fluid">
-					<a class="btn btn-primary" id="btn_save_board">save board</a>
-					<a class="btn btn-primary" id="btn_export_board">export board</a>
-					<a class="btn btn-primary" id="btn_reset_board">reset board</a>
-				</div>
-				<div class="form-check">
-						<label class="form-check-label" for="checkbox_toggle_guides">
-						Hilfslinien
-						</label>
-						<input data-toggle="toggle" type="checkbox" id="checkbox_toggle_guides" value="off">
-					</div>
-                <li>
-                    <a href="#">Impressum & Datenschutz</a>
-                </li>
-            </div>
-        </div>
-        <!-- /#sidebar-wrapper -->
-
-        <!-- Page Content -->
-        <div id="page-content-wrapper">
-            <div class="page-header">
-				<h1>Foosboard</h1>
-				<p>...die Taktiktafel für Tischfußball</p> 
-			</div>
-				<div class="container-fluid" >
-					<svg id="foosball_table" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="foosball_table" ></svg>
-										
-				</div>
-                <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Toggle Menu</a>
-				
-
-				
-				<a class="btn btn-primary" id="btn_addshot_direct">direct shot</a>
-				<a class="btn btn-primary" id="btn_addshot_bank_near">near bank shot</a>
-				<a class="btn btn-primary" id="btn_addshot_bank_far">far bank shot</a>
-				
-				<div id="btn_edit_shot" class="container-fluid">
-				<a class="btn btn-primary" id="btn_save_shot">save</a>
-				<a class="btn btn-primary" id="btn_cancel_shot">cancel</a>
-				<a class="btn btn-primary" id="btn_delete_shot">delete</a>
-				<select id="colorselector">
-					<option value="106" data-color="#FCF141" selected="selected">yellow</option>
-					<option value="47" data-color="#FF9900">orange</option>
-					<option value="87" data-color="#FF6600">orangered</option>
-					<option value="15" data-color="#5E9DC8">light blue</option>
-					<option value="24" data-color="#34DDDD">turquise</option>
-				</select>
-				</div>
-				
-				<div id='saved_positions_table'>
-					<table class="table table-striped">
-					  <thead>
-						<tr>
-						  <th scope="col">#</th>
-						  <th scope="col">Name</th>
-						  <!-- Button trigger modal -->
-						  <th scope="col"><a id="btn_save_pos_modal" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModalHorizontal">save positions</a></th>
-						  
-						</tr>
-					  </thead>
-					  <tbody>
-						<tr style="display:none;" id="tr_clone_me">
-						  <th scope="row">1</th>
-							<td>gerades System</td>
-							<td><div class="btn-group" role="group" aria-label="Basic example">
-							<button type="button" class="btn btn-secondary btn_savedpos_set btn_savedpos_setP1">Set P1</button>
-							<button type="button" class="btn btn-secondary btn_savedpos_set btn_savedpos_setP2">Set P2</button>
-							<button type="button" class="btn btn-secondary btn_savedpos_mirror" data-toggle="button" aria-pressed="false" autocomplete="off">Mirror</button>
-							<button type="button" class="btn btn-secondary btn_savedpos_delete">Delete</button>
-							<button type="button" class="btn btn-secondary" onclick='saved_position_init()'>test init</button>
-							</div></td>
-						</tr>
-					  </tbody>
-					</table>
-				</div>
-				
-				<!-- Modal -->
-				<div class="modal fade" id="myModalHorizontal" tabindex="-1" role="dialog" 
-					 aria-labelledby="myModalLabel" aria-hidden="true">
-					<div class="modal-dialog">
-						<div class="modal-content">
-							<!-- Modal Header -->
-							<div class="modal-header">
-								<button type="button" class="close" 
-								   data-dismiss="modal">
-									   <span aria-hidden="true">&times;</span>
-									   <span class="sr-only">Close</span>
-								</button>
-								<h4 class="modal-title" id="myModalLabel">
-									Description for new position
-								</h4>
-							</div>
-							
-							<!-- Modal Body -->
-							<div class="modal-body">
-								
-								<form class="form-horizontal" role="form">
-								  <div class="form-group">
-									<label  class="col-sm-2 control-label"
-											  for="inputSavePosName">Description</label>
-									<div class="col-sm-10">
-										<input type="text" class="form-control"  autofocus
-										id="inputSavePosName" placeholder="Name">
-									</div>
-								  </div>
-								  
-								  
-								</form>
-							</div>
-							
-							<!-- Modal Footer -->
-							<div class="modal-footer">
-								<button type="button" id="btn_save_pos" class="btn btn-primary" data-dismiss="modal">
-									Save positions
-								</button>
-							</div>
-						</div>
-					</div>
-				</div>
-				
-				<canvas id="export_canvas" width=600 height=350 display="none">
-
-
-
-
-		
+      
+	<div class="page-header" id="pageheader">
+		<div class="logo" id="logo">
+			 <img src="assets\logo_foosboard.svg" alt="logo foosboard" height="100%" width="100%"> 
 		</div>
-        <!-- /#page-content-wrapper -->
+		
+		<div id="title">
+			<h1 class="header">Foosboard</h1>
+			<p class="subtitle">...die Taktiktafel für Tischfußball</p> 
+		</div>
+	</div>
 
-    </div>
-    <!-- /#wrapper -->
+	
+
+	<div class="container-fluid" id="shotadd_btn">
+		<div class="foosball_table_div">
+			<svg id="foosball_table" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="foosball_table" ></svg>
+		</div>
+		<div  class="shotbtn_div_first">
+			<a class="btn btn-primary" id="btn_addshot_direct"><img src="assets\icon_bank_direct.svg" class="shoticon"></a>
+		</div>
+		<div  class="shotbtn_div_next">
+			<a class="btn btn-primary" id="btn_addshot_bank_near"><img src="assets\icon_bank_top.svg" class="shoticon"></a>
+		</div>
+		<div  class="shotbtn_div_next">
+			<a class="btn btn-primary" id="btn_addshot_bank_far"><img src="assets\icon_bank_bottom.svg" class="shoticon"></a>
+		</div>
+	</div>
+		
+		
+	<div id="btn_edit_shot" class="container-fluid">
+		<a class="btn btn-primary" id="btn_save_shot"><i class="material-icons">done</i></a>
+		<a class="btn btn-primary" id="btn_cancel_shot"><i class="material-icons">cancel</i></a>
+		<a class="btn btn-primary" id="btn_delete_shot"><i class="material-icons">delete</i></a>
+		
+		<div>
+			<label  class="control-label" for="colorselector"><i class="material-icons">border_color</i></label>
+			<select id="colorselector">
+				<option value="106" data-color="#FCF141" selected="selected">yellow</option>
+				<option value="47" data-color="#FF9900">orange</option>
+				<option value="87" data-color="#FF6600">orangered</option>
+				<option value="15" data-color="#5E9DC8">light blue</option>
+				<option value="24" data-color="#34DDDD">turquise</option>
+			</select>
+		</div>
+	</div>
+	
+	<div id='saved_positions_table'>
+		<table class="table table-striped">
+		  <thead>
+			<tr>
+			  <th scope="col">#</th>
+			  <th scope="col">Name</th>
+			  <!-- Button trigger modal -->
+			  <th scope="col"><a id="btn_save_pos_modal" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModalHorizontal"><i class="material-icons">add_box</i></a></th>
+			</tr>
+		  </thead>
+		  <tbody>
+			<tr style="display:none;" id="tr_clone_me">
+				<th scope="row">1</th>
+				<td>gerades System</td>
+				<td>
+					<div class="btn-group" role="group" aria-label="Basic example">
+						<button type="button" class="btn btn-secondary btn_savedpos_set btn_savedpos_setP1">Set P1</button>
+						<button type="button" class="btn btn-secondary btn_savedpos_set btn_savedpos_setP2">Set P2</button>
+						<button type="button" class="btn btn-secondary btn_savedpos_mirror" data-toggle="button" aria-pressed="false" autocomplete="off"><i class="material-icons">flip</i></button>
+						<button type="button" class="btn btn-secondary btn_savedpos_delete"><i class="material-icons">delete</i></button>
+						<button type="button" class="btn btn-secondary" onclick='saved_position_init()'>test init</button>
+					</div>
+				</td>
+			</tr>
+		  </tbody>
+		</table>
+	</div>
+	
+	<div id='editview'>
+		<input data-toggle="toggle" data-on="5 Positions" data-off="3 Positions" type="checkbox" id="check_5goalpos" value="off" data-onstyle="secondary" data-offstyle="primary">
+			<div id="btn_save_load_shot" class="container-fluid">
+				<a class="btn btn-primary" id="btn_save_board"><i class="material-icons">save</i></a>
+				<a class="btn btn-primary" id="btn_export_board"><i class="material-icons">share</i></a>
+				<a class="btn btn-primary" id="btn_reset_board"><i class="material-icons">delete_forever</i></a>
+				<!-- @@TODO: load button -->
+			</div>
+		
+			<div class="form-check">
+				<label class="form-check-label" for="checkbox_toggle_guides">
+				Hilfslinien
+				</label>
+				<input data-toggle="toggle" type="checkbox" id="checkbox_toggle_guides" value="off" data-onstyle="secondary" data-offstyle="primary">
+			</div>
+
+			
+	</div>
+	<div id='page_footer'>
+		<a href="#">Impressum & Datenschutz</a>
+	</div>
+	
+		
+		<!-- Modal -->
+	<div class="modal fade" id="myModalHorizontal" tabindex="-1" role="dialog" 
+			 aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<!-- Modal Header -->
+					<div class="modal-header">
+						<button type="button" class="close" 
+						   data-dismiss="modal">
+							   <span aria-hidden="true">&times;</span>
+							   <span class="sr-only">Close</span>
+						</button>
+						<h4 class="modal-title" id="myModalLabel">
+							Description for new position
+						</h4>
+					</div>
+					
+					<!-- Modal Body -->
+					<div class="modal-body">
+						
+						<form class="form-horizontal" role="form">
+						  <div class="form-group">
+							<label  class="col-sm-2 control-label"
+									  for="inputSavePosName">Description</label>
+							<div class="col-sm-10">
+								<input type="text" class="form-control"  autofocus
+								id="inputSavePosName" placeholder="Name">
+							</div>
+						  </div>
+						  
+						  
+						</form>
+					</div>
+					
+					<!-- Modal Footer -->
+					<div class="modal-footer">
+						<button type="button" id="btn_save_pos" class="btn btn-primary" data-dismiss="modal">
+							Save positions
+						</button>
+					</div>
+				</div>
+			</div>
+	</div>
+		
+	<div id="div_export">
+		<canvas id="export_canvas" width=600 height=350 display="none">
+	</div>
+
+
+
+	
+
+    
 		
     
 	
@@ -171,6 +180,11 @@
 	<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
 	<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
 	
+	 <!-- Google Web Fonts -->
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	 <link href="https://fonts.googleapis.com/css?family=Patrick+Hand+SC" rel="stylesheet"> 
+	 <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet"> 
+	
 	 <!-- SnapSVG -->
 	<script src="script/snap.svg-min.js"></script>
 	
@@ -180,18 +194,6 @@
 	<script src="script/foosboard_save_load.js"> type="text/javascript" </script>  
 	<script src="script/colorselector.js"> type="text/javascript" </script> 
 		
-	
-	
-    <!-- Menu Toggle Script -->
-    <script>
-	
-	
-    $("#menu-toggle").click(function(e) {
-        e.preventDefault();
-        $("#wrapper").toggleClass("toggled");
-    });
-	
-	
-    </script>
+
   </body>
 </html>

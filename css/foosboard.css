@@ -5,10 +5,49 @@
 }
 
 .logo {
-	width=50px;
-	height=50px;
+	float: left;
+	width: 100px;
+	height: 100px;
 }
 
+.header {
+	/* font-family: 'Indie Flower', cursive; */
+	font-family: 'Patrick Hand SC', cursive;
+	font-size: 100px;
+}
+
+.subtitle {
+	/* font-family: 'Patrick Hand SC', cursive; */
+	margin-left: 20px;
+	font-family: 'Indie Flower', cursive;
+	font-size: 20px;
+}
+
+.shoticon {
+    height: 100%;
+    width: 100%;
+    display: block;
+	
+}
+
+.foosball_table_div {
+	width: 80vw;
+	height: 60vh;
+	float: left;
+}
+
+.shotbtn_div_first .shotbtn_div_next {
+	height: 60px;
+    width: 60px;
+}
+
+.shotbtn_div_first {
+	float: right;
+}
+
+.shotbtn_div_next {
+	float: left;
+};
 
 /*
  * A colorselector for Twitter Bootstrap which lets you select a color from a predefined set of colors only.
