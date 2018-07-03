@@ -1,13 +1,12 @@
 .foosball_table { 
-    width: 80vw;
-	height: 60vh;
-	max-height: 100%
+    /* width: 800px; */
+	/* height: 100%; */
+	/* max-height: 100% */
 }
 
 .logo {
-	float: left;
-	width: 100px;
-	height: 100px;
+	width: 50px;
+	height: 50px;
 }
 
 .header {
@@ -33,21 +32,12 @@
 .foosball_table_div {
 	width: 80vw;
 	height: 60vh;
-	float: left;
 }
 
-.shotbtn_div_first .shotbtn_div_next {
+.shotbtn_div {
 	height: 60px;
     width: 60px;
 }
-
-.shotbtn_div_first {
-	float: right;
-}
-
-.shotbtn_div_next {
-	float: left;
-};
 
 /*
  * A colorselector for Twitter Bootstrap which lets you select a color from a predefined set of colors only.

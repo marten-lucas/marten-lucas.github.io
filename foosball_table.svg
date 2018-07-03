@@ -11,7 +11,7 @@
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    id="foosboard_svg"
    version="1.1"
-   inkscape:version="0.92.2 (5c3e80d, 2017-08-06)"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)"
    sodipodi:docname="foosball_table.svg"
    title="Foosalytics v1.0"
    viewbox="0 0 610 470"
@@ -247,18 +247,18 @@
   </defs>
   <sodipodi:namedview
      id="base"
-     pagecolor="#ffffff"
+     pagecolor="#e9e9e9"
      bordercolor="#666666"
      borderopacity="1.0"
-     inkscape:pageopacity="0.0"
+     inkscape:pageopacity="0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.2098244"
-     inkscape:cx="215.07634"
-     inkscape:cy="212.68462"
+     inkscape:cx="48.645298"
+     inkscape:cy="-22.410192"
      inkscape:document-units="px"
      showgrid="true"
-     inkscape:window-width="1600"
-     inkscape:window-height="838"
+     inkscape:window-width="2560"
+     inkscape:window-height="1377"
      inkscape:window-x="-8"
      inkscape:window-y="-8"
      inkscape:window-maximized="1"
@@ -274,7 +274,7 @@
      inkscape:snap-bbox="true"
      inkscape:snap-global="true"
      inkscape:snap-grids="false"
-     inkscape:current-layer="guides">
+     inkscape:current-layer="P2_3_rod">
     <inkscape:grid
        type="xygrid"
        id="grid2816"
@@ -566,14 +566,14 @@
      style="display:inline"
      transform="translate(94.47184,-204.63216)">
     <rect
-       style="display:inline;opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:#fafafa;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1, 1;stroke-dashoffset:0;stroke-opacity:1"
+       style="display:inline;opacity:1;vector-effect:none;fill:#e9e9e9;fill-opacity:0;stroke:#fafafa;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1, 1;stroke-dashoffset:0;stroke-opacity:1"
        id="P2_3_movebox_toward"
        width="69.896812"
        height="57.783611"
        x="278.36127"
        y="607.98254" />
     <rect
-       style="display:inline;opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:#fafafa;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1, 1;stroke-dashoffset:0;stroke-opacity:1"
+       style="display:inline;opacity:1;vector-effect:none;fill:#e9e9e9;fill-opacity:0;stroke:#fafafa;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1, 1;stroke-dashoffset:0;stroke-opacity:1"
        id="P2_3_movebox_away"
        width="69.896812"
        height="57.783611"
@@ -607,7 +607,7 @@
      inkscape:groupmode="layer"
      transform="translate(94.47184,-204.63216)">
     <rect
-       style="display:inline;opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:#fafafa;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1, 1;stroke-dashoffset:0;stroke-opacity:1"
+       style="display:inline;opacity:1;vector-effect:none;fill:#e9e9e9;fill-opacity:0;stroke:#fafafa;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1, 1;stroke-dashoffset:0;stroke-opacity:1"
        id="P1_1_movebox_away"
        width="69.896812"
        height="57.783611"
@@ -615,7 +615,7 @@
        y="607.98254"
        inkscape:label="P1_1_movebox_away" />
     <rect
-       style="display:inline;opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:#fafafa;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1, 1;stroke-dashoffset:0;stroke-opacity:1"
+       style="display:inline;opacity:1;vector-effect:none;fill:#e9e9e9;fill-opacity:0;stroke:#fafafa;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1, 1;stroke-dashoffset:0;stroke-opacity:1"
        id="P1_1_movebox_toward"
        width="69.896812"
        height="57.783611"
@@ -649,14 +649,14 @@
      style="display:inline"
      transform="translate(94.47184,-204.63216)">
     <rect
-       style="display:inline;opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:#fafafa;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1, 1;stroke-dashoffset:0;stroke-opacity:1"
+       style="display:inline;opacity:1;vector-effect:none;fill:#e9e9e9;fill-opacity:0;stroke:#fafafa;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1, 1;stroke-dashoffset:0;stroke-opacity:1"
        id="rect2054-2-4-7-3"
        width="69.896812"
        height="57.783611"
        x="348.25809"
        y="607.98254" />
     <rect
-       style="display:inline;opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:#fafafa;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1, 1;stroke-dashoffset:0;stroke-opacity:1"
+       style="display:inline;opacity:1;vector-effect:none;fill:#e9e9e9;fill-opacity:0;stroke:#fafafa;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1, 1;stroke-dashoffset:0;stroke-opacity:1"
        id="P1_2_movebox_toward"
        width="69.896812"
        height="57.783611"
@@ -690,14 +690,14 @@
      inkscape:groupmode="layer"
      transform="translate(94.47184,-204.63216)">
     <rect
-       style="display:inline;opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:#fafafa;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1, 1;stroke-dashoffset:0;stroke-opacity:1"
+       style="display:inline;opacity:1;vector-effect:none;fill:#e9e9e9;fill-opacity:0;stroke:#fafafa;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1, 1;stroke-dashoffset:0;stroke-opacity:1"
        id="P1_5_movebox_away"
        width="69.896812"
        height="57.783611"
        x="208.46446"
        y="607.98254" />
     <rect
-       style="display:inline;opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:#fafafa;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1, 1;stroke-dashoffset:0;stroke-opacity:1"
+       style="display:inline;opacity:1;vector-effect:none;fill:#e9e9e9;fill-opacity:0;stroke:#fafafa;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1, 1;stroke-dashoffset:0;stroke-opacity:1"
        id="P1_5_movebox_toward"
        width="69.896812"
        height="57.783611"
@@ -731,14 +731,14 @@
      style="display:inline"
      transform="translate(94.47184,-204.63216)">
     <rect
-       style="display:inline;opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:#fafafa;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1, 1;stroke-dashoffset:0;stroke-opacity:1"
+       style="display:inline;opacity:1;vector-effect:none;fill:#e9e9e9;fill-opacity:0;stroke:#fafafa;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1, 1;stroke-dashoffset:0;stroke-opacity:1"
        id="P2_5_movebox_toward"
        width="69.896812"
        height="57.783611"
        x="138.56764"
        y="607.98254" />
     <rect
-       style="display:inline;opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:#fafafa;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1, 1;stroke-dashoffset:0;stroke-opacity:1"
+       style="display:inline;opacity:1;vector-effect:none;fill:#e9e9e9;fill-opacity:0;stroke:#fafafa;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1, 1;stroke-dashoffset:0;stroke-opacity:1"
        id="P2_5_movebox_away"
        width="69.896812"
        height="57.783611"
@@ -773,14 +773,14 @@
      style="display:inline"
      transform="translate(94.47184,-204.63216)">
     <rect
-       style="display:inline;opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:#fafafa;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1, 1;stroke-dashoffset:0;stroke-opacity:1"
+       style="display:inline;opacity:1;vector-effect:none;fill:#e9e9e9;fill-opacity:0;stroke:#fafafa;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1, 1;stroke-dashoffset:0;stroke-opacity:1"
        id="P2_1_movebox_toward"
        width="69.896812"
        height="57.783611"
        x="-71.122795"
        y="607.98254" />
     <rect
-       style="opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:#fafafa;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1, 1;stroke-dashoffset:0;stroke-opacity:1"
+       style="opacity:1;vector-effect:none;fill:#e9e9e9;fill-opacity:0;stroke:#fafafa;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1, 1;stroke-dashoffset:0;stroke-opacity:1"
        id="P2_1_movebox_away"
        width="69.896812"
        height="57.783611"
@@ -815,14 +815,14 @@
      inkscape:groupmode="layer"
      transform="translate(94.47184,-204.63216)">
     <rect
-       style="display:inline;opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:#fafafa;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1, 1;stroke-dashoffset:0;stroke-opacity:1"
+       style="display:inline;opacity:1;vector-effect:none;fill:#e9e9e9;fill-opacity:0;stroke:#fafafa;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1, 1;stroke-dashoffset:0;stroke-opacity:1"
        id="P2_2_movebox_toward"
        width="69.896812"
        height="57.783611"
        x="-1.2259828"
        y="607.98254" />
     <rect
-       style="display:inline;opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:#fafafa;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1, 1;stroke-dashoffset:0;stroke-opacity:1"
+       style="display:inline;opacity:1;vector-effect:none;fill:#e9e9e9;fill-opacity:0;stroke:#fafafa;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1, 1;stroke-dashoffset:0;stroke-opacity:1"
        id="P2_2_movebox_away"
        width="69.896812"
        height="57.783611"
@@ -858,14 +858,14 @@
      style="display:inline"
      transform="translate(94.47184,-204.63216)">
     <rect
-       style="display:inline;opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:#fafafa;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1, 1;stroke-dashoffset:0;stroke-opacity:1"
+       style="display:inline;opacity:1;vector-effect:none;fill:#e9e9e9;fill-opacity:0;stroke:#fafafa;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1, 1;stroke-dashoffset:0;stroke-opacity:1"
        id="P1_3_movebox_away"
        width="69.896812"
        height="57.783611"
        x="68.67083"
        y="607.98254" />
     <rect
-       style="display:inline;opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:#fafafa;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1, 1;stroke-dashoffset:0;stroke-opacity:1"
+       style="display:inline;opacity:1;vector-effect:none;fill:#e9e9e9;fill-opacity:0;stroke:#fafafa;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1, 1;stroke-dashoffset:0;stroke-opacity:1"
        id="P1_3_movebox_toward"
        width="69.896812"
        height="57.783611"
@@ -3647,16 +3647,16 @@
      transform="translate(-13,2.4206414)">
     <g
        id="g1723"
-       transform="translate(303.33587,21.443248)"
-       style="fill:#ffff00;fill-opacity:0.45098039">
+       transform="matrix(2.2448075,0,0,2.2450646,11.155469,-242.0906)"
+       style="fill:#ffff00;fill-opacity:0.45098039;stroke-width:0.44544697">
       <circle
          r="8.6016951"
          cy="209.07468"
          cx="237.29019"
          id="path4025-2-3"
-         style="display:inline;fill:#ffff00;fill-opacity:0.45098039;stroke:#333333;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+         style="display:inline;fill:#ffff00;fill-opacity:0.45098039;stroke:#333333;stroke-width:0.44544697;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
       <circle
-         style="display:inline;fill:#ffff00;fill-opacity:0.45098039;stroke:#333333;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         style="display:inline;fill:#ffff00;fill-opacity:0.45098039;stroke:#333333;stroke-width:0.44544697;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
          id="circle1711"
          cx="237.29019"
          cy="209.07468"
@@ -3666,9 +3666,9 @@
          inkscape:connector-curvature="0"
          id="path1713"
          d="m 237.29019,200.22057 v 17.8189"
-         style="fill:#ffff00;fill-opacity:0.45098039;stroke:#333333;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+         style="fill:#ffff00;fill-opacity:0.45098039;stroke:#333333;stroke-width:0.44544697px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
       <path
-         style="fill:#ffff00;fill-opacity:0.45098039;stroke:#333333;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         style="fill:#ffff00;fill-opacity:0.45098039;stroke:#333333;stroke-width:0.44544697px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
          d="m 246.19964,209.13002 h -17.8189"
          id="path1717"
          inkscape:connector-curvature="0"
@@ -3681,6 +3681,17 @@
      id="linestart"
      inkscape:groupmode="layer"
      transform="translate(-13,2.4206414)">
+    <g
+       id="g1949"
+       transform="matrix(2.2669613,0,0,2.2678751,-459.79517,-282.33449)"
+       style="fill:#ffffff;fill-opacity:0.45016097;stroke-width:0.42373839">
+      <circle
+         r="8.6016951"
+         cy="210.8455"
+         cx="241.71725"
+         id="circle1947"
+         style="display:inline;fill:#ffff00;fill-opacity:0.45016097;stroke:#333333;stroke-width:0.44103026;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    </g>
     <g
        style="fill:#ffffff;fill-opacity:0.45016097"
        transform="matrix(0.96136875,0,0,0.96021575,-144.21092,-6.620393)"
@@ -3703,62 +3714,61 @@
        style="opacity:1;vector-effect:none;fill:#ffff00;fill-opacity:0.45098039;stroke:#ffff00;stroke-width:1.08908165;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
        id="rect1547"
        width="34.977196"
-       height="9.7963295"
+       height="59.76857"
        x="299.05899"
-       y="390.85162" />
+       y="390.85159" />
     <rect
-       transform="translate(32.510159,-50.414973)"
        style="display:inline;opacity:1;vector-effect:none;fill:#ffff00;fill-opacity:0.45098039;stroke:#ffff00;stroke-width:1.08908165;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
        id="rect1547-8"
        width="34.977196"
-       height="9.7963295"
-       x="266.54883"
-       y="111.59757" />
+       height="56.261742"
+       x="299.05899"
+       y="14.717191" />
   </g>
   <board_positions>
     <board_position
        id="saved_pos_12312313"
        name="gerades System">
-<rod_position
-   id="saved_pos_12312313_P1_1"
-   tilt="front"
-   rod="P1_1"
-   tilt_bak="down">132</rod_position>
-<rod_position
-   id="saved_pos_12312313_P1_2"
-   tilt="front"
-   rod="P1_2"
-   tilt_bak="down">132</rod_position>
-<rod_position
-   id="saved_pos_12312313_P1_5"
-   tilt="front"
-   rod="P1_5"
-   tilt_bak="down">132</rod_position>
-<rod_position
-   id="saved_pos_12312313_P1_3"
-   tilt="front"
-   rod="P1_3"
-   tilt_bak="down">132</rod_position>
-<rod_position
-   id="saved_pos_12312313_P2_1"
-   tilt="front"
-   rod="P2_1"
-   tilt_bak="down">132</rod_position>
-<rod_position
-   id="saved_pos_12312313_P2_2"
-   tilt="front"
-   rod="P2_2"
-   tilt_bak="down">132</rod_position>
-<rod_position
-   id="saved_pos_12312313_P2_5"
-   tilt="front"
-   rod="P2_5"
-   tilt_bak="down">132</rod_position>
-<rod_position
-   id="saved_pos_12312313_P2_3"
-   tilt="front"
-   rod="P2_3"
-   tilt_bak="down">132</rod_position>
-</board_position>
+      <rod_position
+         id="saved_pos_12312313_P1_1"
+         tilt="front"
+         rod="P1_1"
+         tilt_bak="down">132</rod_position>
+      <rod_position
+         id="saved_pos_12312313_P1_2"
+         tilt="front"
+         rod="P1_2"
+         tilt_bak="down">132</rod_position>
+      <rod_position
+         id="saved_pos_12312313_P1_5"
+         tilt="front"
+         rod="P1_5"
+         tilt_bak="down">132</rod_position>
+      <rod_position
+         id="saved_pos_12312313_P1_3"
+         tilt="front"
+         rod="P1_3"
+         tilt_bak="down">132</rod_position>
+      <rod_position
+         id="saved_pos_12312313_P2_1"
+         tilt="front"
+         rod="P2_1"
+         tilt_bak="down">132</rod_position>
+      <rod_position
+         id="saved_pos_12312313_P2_2"
+         tilt="front"
+         rod="P2_2"
+         tilt_bak="down">132</rod_position>
+      <rod_position
+         id="saved_pos_12312313_P2_5"
+         tilt="front"
+         rod="P2_5"
+         tilt_bak="down">132</rod_position>
+      <rod_position
+         id="saved_pos_12312313_P2_3"
+         tilt="front"
+         rod="P2_3"
+         tilt_bak="down">132</rod_position>
+    </board_position>
   </board_positions>
 </svg>
