@@ -353,10 +353,9 @@ function rod_move(rod_arrow, step_size) {
 	
 	// indicate action by changing fill to red - does not work
 	var svg_arrow = s.select("#" + rod_arrow.id);
-	if (svg_arrow) {
-		var arrow_fill_bak = svg_arrow.attr("fill");
-		svg_arrow.attr('fill', 'red')
-	};
+	// if (svg_arrow) {
+		// svg_arrow.addClass('active_arrow');
+	// };
 	
 	
 	var rod_id = rod_id_get(rod_arrow); 
@@ -447,9 +446,7 @@ function rod_move(rod_arrow, step_size) {
 	};
 	arrow_opposite.attr({ display : "inline" });   
 	
-	if (svg_arrow) {
-		svg_arrow.attr('fill', arrow_fill_bak)
-	};
+
 };
 
 var rod_move_interval

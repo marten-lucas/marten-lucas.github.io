@@ -125,7 +125,7 @@ function saved_position_init() {
 		var this_tr = $(this_selector);
 		//@@TODO: does not work! although item with id exists it is still cloned (can be tested with test init button)
 		if (this_tr.length == 0) {
-			saved_positions_table_addrow(this_pos.id, this_pos.name);
+			saved_positions_table_addrow(this_pos.id, this_pos.name, this_pos.getAttribute("player_id"));
 		};
 		
 	});
@@ -152,47 +152,57 @@ function saved_position_init() {
 function btn_pos_save_click () {
 	
 	var pos_name = $('#inputSavePosName').val();
-	position_save (pos_name);
+	
+	if ($('#player_id_save').is(':checked')) {
+		var player_id = "P2";
+	} else {
+		var player_id = "P1";
+	};
+	position_save (pos_name, player_id);
 	
 	saved_position_init();
 	
 };
 
-function position_save(pos_name){
+function position_save(pos_name,player_id){
 	var d = new Date();
 	var pos_id = "saved_pos_" + d.getTime();
 	
 	var new_boardpos = document.createElement('board_position');
 	new_boardpos.name = pos_name;
 	new_boardpos.id = pos_id;
+	new_boardpos.setAttribute('player_id',player_id);
 	$('board_positions').append(new_boardpos);
 	
-	var player_id = ['P1','P2'];
+	
 	var rod_id = ['1','2','5','3'];
 
 		
-	for (var k = 0; k < player_id.length; k++) {
-		for (var i = 0; i < rod_id.length; i++) {
-			var this_rodpos = document.createElement('rod_position');
-			var this_rod_id = player_id[k] + '_' + rod_id[i]
-			this_rodpos.id = pos_id + "_" + this_rod_id;
-			this_rodpos.setAttribute('rod', this_rod_id);
-			this_rodpos.setAttribute('tilt', tilt_positions_get(this_rod_id));
-			this_rodpos.setAttribute('tilt_bak', tilt_positions_get(this_rod_id, true));
-			this_rodpos.innerHTML = rod_position_get(this_rod_id);
-			
-			new_boardpos.append(this_rodpos);
-		};
+	
+	for (var i = 0; i < rod_id.length; i++) {
+		var this_rodpos = document.createElement('rod_position');
+		var this_rod_id = player_id + '_' + rod_id[i]
+		this_rodpos.id = pos_id + "_" + this_rod_id;
+		this_rodpos.setAttribute('rod', this_rod_id);
+		this_rodpos.setAttribute('tilt', tilt_positions_get(this_rod_id));
+		this_rodpos.setAttribute('tilt_bak', tilt_positions_get(this_rod_id, true));
+		this_rodpos.innerHTML = rod_position_get(this_rod_id);
+	
+		new_boardpos.append(this_rodpos);
 	};
+	
 	
 	
 };
 
-function saved_positions_table_addrow(new_id, new_name) {
+function saved_positions_table_addrow(new_id, new_name, player_id) {
 	var clonedRow = $('tbody tr:first').clone();
 
 	clonedRow.attr('id', "#tr_" + new_id)
 	clonedRow.data('savedpos', new_id)
+	
+	clonedRow.find('th:first').addClass(player_id);
+
 	clonedRow.find('td:first').text(new_name);
 	$('#saved_positions_table').find($('tbody')).append(clonedRow);
 	
@@ -204,11 +214,8 @@ function btn_row_set_click(btn) {
 	var savedpos_tr = btn.closest( "tr" );
 	var savedpos_id = savedpos_tr.id.replace('#tr_', '');
 	
-	if (btn.classList.contains( "btn_savedpos_setP1" )) {
-		var player_id = "P1";
-	} else {
-		var player_id = "P2";
-	};
+	player_id = $( '#'+savedpos_id).attr('player_id');
+	
 	
 	var roddata_id = savedpos_id+"_" + player_id + "_";
 	
