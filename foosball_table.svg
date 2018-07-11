@@ -252,9 +252,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.2098244"
-     inkscape:cx="48.645298"
-     inkscape:cy="-22.410192"
+     inkscape:zoom="19.35719"
+     inkscape:cx="293.99881"
+     inkscape:cy="-304.65641"
      inkscape:document-units="px"
      showgrid="true"
      inkscape:window-width="2560"
@@ -274,7 +274,7 @@
      inkscape:snap-bbox="true"
      inkscape:snap-global="true"
      inkscape:snap-grids="false"
-     inkscape:current-layer="P2_3_rod">
+     inkscape:current-layer="linebank">
     <inkscape:grid
        type="xygrid"
        id="grid2816"
@@ -3710,26 +3710,24 @@
      inkscape:label="linebank"
      style="display:none"
      transform="translate(-13,2.4206414)">
-    <rect
+    <path
        style="opacity:1;vector-effect:none;fill:#ffff00;fill-opacity:0.45098039;stroke:#ffff00;stroke-width:1.08908165;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       id="rect1547"
-       width="34.977196"
-       height="59.76857"
-       x="299.05899"
-       y="390.85159" />
-    <rect
-       style="display:inline;opacity:1;vector-effect:none;fill:#ffff00;fill-opacity:0.45098039;stroke:#ffff00;stroke-width:1.08908165;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       id="rect1547-8"
-       width="34.977196"
-       height="56.261742"
-       x="299.05899"
-       y="14.717191" />
+       d="M 298.47452,55.368504 V 1.85763 h 35.54595 v 53.656991 l -17.77298,14.684822 z"
+       id="path1383"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccccc" />
+    <path
+       sodipodi:nodetypes="cccccc"
+       inkscape:connector-curvature="0"
+       id="path1408"
+       d="m 298.47452,406.43854 v 53.51087 h 35.54595 V 406.29242 L 316.24749,391.6076 Z"
+       style="opacity:1;vector-effect:none;fill:#ffff00;fill-opacity:0.45098039;stroke:#ffff00;stroke-width:1.08908165;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
   </g>
   <board_positions>
     <board_position
        id="saved_pos_12312313"
        name="gerades System"
-	   player_id="P1">
+       player_id="P1">
       <rod_position
          id="saved_pos_12312313_P1_1"
          tilt="front"
