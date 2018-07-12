@@ -120,13 +120,9 @@ function saved_position_init() {
 	};
 	
 	$( "board_position" ).each(function(i, this_pos) {
-		var this_selector = "#tr_" + this_pos.id
-		
-		var this_tr = $(this_selector);
-		//@@TODO: does not work! although item with id exists it is still cloned (can be tested with test init button)
-		if (this_tr.length == 0) {
+		if (!document.getElementById("tr_" + this_pos.id)){
 			saved_positions_table_addrow(this_pos.id, this_pos.name, this_pos.getAttribute("player_id"));
-		};
+		}
 		
 	});
 
@@ -198,7 +194,7 @@ function position_save(pos_name,player_id){
 function saved_positions_table_addrow(new_id, new_name, player_id) {
 	var clonedRow = $('tbody tr:first').clone();
 
-	clonedRow.attr('id', "#tr_" + new_id)
+	clonedRow.attr('id', "tr_" + new_id)
 	clonedRow.data('savedpos', new_id)
 	
 	clonedRow.find('th:first').addClass(player_id);
