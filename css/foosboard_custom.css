@@ -20,30 +20,14 @@ body {
 	vertical-align: middle; 
 }
 
-
-
-.shoticon_top {
-	padding-top: 20%;
-	width: auto;
-	
-}
-	
-
-.shoticon_mid {
-   padding-top: 40%;
-	width: auto;
-	
+.shoticon {
+  padding: 1vh 0;
+  width: auto;
 }
 
-.shoticon_bottom {
-    padding-top: 60%;
-	width: auto;	
-}
-
-
-.shotbtn_div {
-	padding-top: 60px;
-    width: 60px;
+.shottoolbar {
+	top: 21vh;
+  width: 60px;
 }
 
 .P1 {

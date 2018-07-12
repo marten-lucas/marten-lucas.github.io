@@ -205,8 +205,13 @@ function ball_position_set( pagex, pagey ,ev) {
 	var bb_ball = ball_svg.getBBox();
 	
 	// !!!! MAGIC VALUE !!!! need to be set to comp
+	console.log(pagex);
+	console.log(pagey);
 	var new_y = pagey - 110;
 	var new_x = pagex - 50;
+
+	var new_y = pagey - 245;
+	var new_x = pagex - 145;
 	var dx = new_x - bb_ball.cx ;
 	var dy = new_y - bb_ball.cy;
 	var origTransform = ball_svg.transform().local
